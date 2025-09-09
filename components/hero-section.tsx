@@ -1,98 +1,127 @@
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Star } from "lucide-react";
+import React from "react";
 
-export default function HeroSection() {
+const HeroSection: React.FC = () => {
   return (
-    <section
-      id="home"
-      className="relative h-screen flex flex-col justify-center overflow-hidden"
-    >
-      {/* Video Background with fallback */}
-      <div className="absolute inset-0 z-0">
-        <video
-          className="w-full h-full object-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster="/wellness-hero-image.jpg"
-        >
-          <source src="/wellness-hero-video.mp4" type="video/mp4" />
-          <img
-            src="/wellness-hero-image.jpg"
-            alt="Serene wellness center"
-            className="w-full h-full object-cover"
-          />
-        </video>
-
-        {/* Clean gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-green-900/70 to-black/50"></div>
-      </div>
-
-      {/* Content - Perfectly centered and responsive */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex-1 flex flex-col justify-center">
-        <div className="max-w-4xl mx-auto text-center lg:text-left">
-          {/* Simple trust badge */}
-          <div className="flex items-center justify-center lg:justify-start gap-2 mb-4 sm:mb-6">
-            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-3 sm:px-4 py-1.5 sm:py-2 border border-white/20">
-              <div className="flex">
-                {[...Array(5)].map((_, i) => (
-                  <Star
-                    key={i}
-                    className="h-3 w-3 sm:h-4 sm:w-4 fill-yellow-400 text-yellow-400"
-                  />
-                ))}
-              </div>
-              <span className="text-xs sm:text-sm text-white font-medium">
-                2,000+ Happy Clients
-              </span>
-            </div>
+    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-rose-50 to-pink-100 relative overflow-hidden">
+      {/* Hero Content */}
+      <div className="flex items-center justify-between px-8 lg:px-16 py-8 lg:py-16 min-h-screen">
+        {/* Left Content */}
+        <div className="flex-1 max-w-2xl relative z-10">
+          {/* Floating Rose Petals - More realistic shapes */}
+          <div className="absolute top-16 left-8 w-20 h-16 opacity-90">
+            <div
+              className="w-full h-full bg-gradient-to-br from-pink-300 via-pink-400 to-pink-500 rounded-full transform rotate-12 shadow-lg"
+              style={{
+                clipPath: "ellipse(70% 50% at 40% 40%)",
+                borderRadius: "50% 30% 60% 40%",
+              }}
+            ></div>
           </div>
 
-          {/* Clean main headline - optimized for screen fit */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light text-white mb-3 sm:mb-4 lg:mb-6 leading-tight">
-            <span className="font-extralight italic text-green-200">
-              Transform
-            </span>
+          <div className="absolute top-40 left-20 w-16 h-12 opacity-80">
+            <div
+              className="w-full h-full bg-gradient-to-br from-pink-200 via-pink-300 to-pink-400 rounded-full transform -rotate-12 shadow-md"
+              style={{
+                clipPath: "ellipse(60% 40% at 50% 60%)",
+                borderRadius: "40% 60% 30% 50%",
+              }}
+            ></div>
+          </div>
+
+          <div className="absolute top-8 left-48 w-12 h-10 opacity-70">
+            <div
+              className="w-full h-full bg-gradient-to-br from-pink-300 via-pink-400 to-pink-500 rounded-full transform rotate-25 shadow-sm"
+              style={{
+                borderRadius: "50% 40% 60% 30%",
+              }}
+            ></div>
+          </div>
+
+          {/* Main Heading - Exact font styling */}
+          <h1 className="text-6xl lg:text-8xl font-serif text-gray-900 leading-[0.9] mb-8 tracking-tight">
+            Care of
             <br />
-            <span className="font-bold bg-gradient-to-r from-white to-green-200 bg-clip-text text-transparent">
-              Your Wellness
+            <span className="relative inline-block">
+              your body
+              {/* Decorative petal near text */}
+              <div
+                className="absolute -top-3 right-6 w-8 h-6 bg-gradient-to-br from-pink-300 to-pink-500 opacity-80 transform rotate-15"
+                style={{
+                  borderRadius: "50% 30% 60% 40%",
+                }}
+              ></div>
             </span>
           </h1>
 
-          {/* Optimized subtitle */}
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/85 mb-4 sm:mb-6 lg:mb-8 font-light leading-relaxed max-w-2xl mx-auto lg:mx-0">
-            Premium treatments and personalized wellness programs at our
-            state-of-the-art center.
-          </p>
+          {/* Scroll Indicator - Matching original design */}
+          <div className="flex items-center space-x-3 text-gray-600 mt-12">
+            <span className="text-sm font-medium tracking-[0.2em] uppercase">
+              Scroll
+            </span>
+            <div className="w-6 h-14 border-2 border-gray-400 rounded-full flex items-end justify-center pb-2">
+              <div className="w-1.5 h-4 bg-gray-400 rounded-full animate-bounce"></div>
+            </div>
+          </div>
+        </div>
 
-          {/* Compact CTA buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
-            <Button
-              size="lg"
-              className="w-full sm:w-auto text-sm sm:text-base px-5 sm:px-6 lg:px-8 py-2.5 sm:py-3 lg:py-4 bg-green-600 hover:bg-green-700 text-white font-medium shadow-xl hover:shadow-green-500/25 transition-all duration-300"
-            >
-              Book Consultation
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+        {/* Right Content - Woman Image with exact circular frame */}
+        <div className="flex-1 flex justify-center lg:justify-end relative">
+          <div className="relative">
+            {/* Main circular image container - Exact sizing and positioning */}
+            <div className="w-[420px] h-[420px] lg:w-[500px] lg:h-[500px] rounded-full overflow-hidden bg-gradient-to-br from-pink-100 to-rose-200 shadow-xl border-4 border-white/50">
+              <img
+                src="/api/placeholder/500/500"
+                alt="Beautiful woman with natural skincare"
+                className="w-full h-full object-cover object-center scale-110"
+              />
+            </div>
 
-            <Button
-              size="lg"
-              variant="outline"
-              className="w-full sm:w-auto text-sm sm:text-base px-5 sm:px-6 lg:px-8 py-2.5 sm:py-3 lg:py-4 bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white hover:bg-white/20 font-medium transition-all duration-300"
-            >
-              View Services
-            </Button>
+            {/* Additional floating petals around the image - More accurate positioning */}
+            <div className="absolute -top-6 right-20 w-12 h-10 opacity-70">
+              <div
+                className="w-full h-full bg-gradient-to-br from-pink-300 to-pink-500 transform rotate-45 shadow-lg"
+                style={{
+                  borderRadius: "50% 30% 60% 40%",
+                }}
+              ></div>
+            </div>
+
+            <div className="absolute top-32 -right-4 w-8 h-6 opacity-60">
+              <div
+                className="w-full h-full bg-gradient-to-br from-pink-200 to-pink-400 transform -rotate-12 shadow-md"
+                style={{
+                  borderRadius: "40% 60% 30% 50%",
+                }}
+              ></div>
+            </div>
+
+            <div className="absolute bottom-20 -left-8 w-14 h-12 opacity-75">
+              <div
+                className="w-full h-full bg-gradient-to-br from-pink-300 to-pink-500 transform rotate-30 shadow-lg"
+                style={{
+                  borderRadius: "50% 40% 60% 30%",
+                }}
+              ></div>
+            </div>
+
+            <div className="absolute bottom-40 right-8 w-10 h-8 opacity-65">
+              <div
+                className="w-full h-full bg-gradient-to-br from-pink-200 to-pink-500 transform -rotate-20 shadow-md"
+                style={{
+                  borderRadius: "60% 40% 50% 30%",
+                }}
+              ></div>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Minimal scroll indicator */}
-      <div className="absolute bottom-4 sm:bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce hidden sm:block">
-        <div className="w-4 h-6 sm:w-5 sm:h-8 border-2 border-white/50 rounded-full flex justify-center">
-          <div className="w-0.5 h-1.5 sm:w-1 sm:h-2 bg-white/70 rounded-full mt-1.5 sm:mt-2 animate-pulse"></div>
-        </div>
-      </div>
-    </section>
+      {/* Background decorative elements - Softer and more subtle */}
+      <div className="absolute top-1/3 right-1/3 w-40 h-40 bg-pink-200/20 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-1/4 left-1/5 w-32 h-32 bg-rose-200/25 rounded-full blur-2xl"></div>
+      <div className="absolute top-1/2 left-1/2 w-28 h-28 bg-pink-300/15 rounded-full blur-2xl"></div>
+    </div>
   );
-}
+};
+
+export default HeroSection;

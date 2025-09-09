@@ -2,89 +2,67 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Phone, MapPin } from "lucide-react";
+import { Menu, X, Search, ShoppingBag } from "lucide-react";
 import Link from "next/link";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="bg-background border-b border-border sticky top-0 z-50 shadow-sm">
-      {/* Top bar with dark green background - full width */}
-      <div className="flex items-center justify-between py-3 text-sm text-black/70 bg-green-400/60 px-4">
-        <div className="container mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2">
-              <Phone className="h-4 w-4" />
-              <span className="font-medium">+1 (555) 123-4567</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <MapPin className="h-4 w-4" />
-              <span className="font-medium">
-                123 Wellness Ave, City, State 12345
-              </span>
-            </div>
-          </div>
-          <div className="hidden md:block">
-            <span className="font-medium">Mon-Fri: 9AM-7PM | Sat: 9AM-5PM</span>
-          </div>
-        </div>
-      </div>
-
+    <header className="bg-white/80 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50 shadow-sm">
       <div className="container mx-auto px-4">
         {/* Main navigation */}
-        <div className="flex items-center justify-between py-4 bg-white">
+        <div className="flex items-center justify-between py-6">
+          {/* Logo */}
           <div className="flex items-center">
             <Link
               href="/"
-              className="text-2xl font-bold text-green-800 hover:text-green-600 transition-colors"
+              className="text-2xl font-serif text-gray-800 hover:text-gray-600 transition-colors"
             >
-              Serenity Wellness
+              Amoy
             </Link>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             <Link
-              href="/"
-              className="text-gray-700 hover:text-green-700 transition-colors font-medium"
-            >
-              Home
-            </Link>
-            <Link
               href="/services"
-              className="text-gray-700 hover:text-green-700 transition-colors font-medium"
+              className="text-gray-600 hover:text-gray-800 transition-colors font-medium tracking-wider text-sm uppercase"
             >
               Services
             </Link>
             <Link
-              href="/about"
-              className="text-gray-700 hover:text-green-700 transition-colors font-medium"
+              href="/careers"
+              className="text-gray-600 hover:text-gray-800 transition-colors font-medium tracking-wider text-sm uppercase"
             >
-              About
+              Careers
             </Link>
             <Link
-              href="/gallery"
-              className="text-gray-700 hover:text-green-700 transition-colors font-medium"
+              href="/shop"
+              className="text-gray-600 hover:text-gray-800 transition-colors font-medium tracking-wider text-sm uppercase"
             >
-              Gallery
+              Shop
             </Link>
             <Link
-              href="/contact"
-              className="text-gray-700 hover:text-green-700 transition-colors font-medium"
+              href="/social"
+              className="text-gray-600 hover:text-gray-800 transition-colors font-medium tracking-wider text-sm uppercase"
             >
-              Contact
+              Social
             </Link>
           </nav>
 
+          {/* Right side icons */}
           <div className="flex items-center gap-4">
-            <Button className="hidden md:inline-flex bg-green-700 hover:bg-green-600 text-white font-medium px-6 py-2 rounded-md transition-colors">
-              Book Consultation
-            </Button>
+            <button className="text-gray-600 hover:text-gray-800 transition-colors hidden md:block">
+              <Search className="w-5 h-5" />
+            </button>
+            <button className="text-gray-600 hover:text-gray-800 transition-colors hidden md:block">
+              <ShoppingBag className="w-5 h-5" />
+            </button>
 
             {/* Mobile menu button */}
             <button
-              className="md:hidden text-green-800 hover:text-green-600 transition-colors"
+              className="md:hidden text-gray-800 hover:text-gray-600 transition-colors"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? (
@@ -98,49 +76,48 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <nav className="md:hidden py-4 border-t border-green-200 bg-white">
+          <nav className="md:hidden py-4 border-t border-gray-200 bg-white/95 backdrop-blur-sm">
             <div className="flex flex-col space-y-4">
               <Link
-                href="/"
-                className="text-gray-700 hover:text-green-700 transition-colors font-medium py-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Home
-              </Link>
-              <Link
                 href="/services"
-                className="text-gray-700 hover:text-green-700 transition-colors font-medium py-2"
+                className="text-gray-600 hover:text-gray-800 transition-colors font-medium py-2 tracking-wider text-sm uppercase"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Services
               </Link>
               <Link
-                href="/about"
-                className="text-gray-700 hover:text-green-700 transition-colors font-medium py-2"
+                href="/careers"
+                className="text-gray-600 hover:text-gray-800 transition-colors font-medium py-2 tracking-wider text-sm uppercase"
                 onClick={() => setIsMenuOpen(false)}
               >
-                About
+                Careers
               </Link>
               <Link
-                href="/gallery"
-                className="text-gray-700 hover:text-green-700 transition-colors font-medium py-2"
+                href="/shop"
+                className="text-gray-600 hover:text-gray-800 transition-colors font-medium py-2 tracking-wider text-sm uppercase"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Gallery
+                Shop
               </Link>
               <Link
-                href="/contact"
-                className="text-gray-700 hover:text-green-700 transition-colors font-medium py-2"
+                href="/social"
+                className="text-gray-600 hover:text-gray-800 transition-colors font-medium py-2 tracking-wider text-sm uppercase"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Contact
+                Social
               </Link>
-              <Button
-                className="w-full bg-green-700 hover:bg-green-600 text-white font-medium py-3 rounded-md transition-colors mt-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Book Consultation
-              </Button>
+
+              {/* Mobile icons */}
+              <div className="flex items-center gap-4 pt-4 border-t border-gray-200">
+                <button className="text-gray-600 hover:text-gray-800 transition-colors flex items-center gap-2">
+                  <Search className="w-5 h-5" />
+                  <span className="text-sm">Search</span>
+                </button>
+                <button className="text-gray-600 hover:text-gray-800 transition-colors flex items-center gap-2">
+                  <ShoppingBag className="w-5 h-5" />
+                  <span className="text-sm">Cart</span>
+                </button>
+              </div>
             </div>
           </nav>
         )}
