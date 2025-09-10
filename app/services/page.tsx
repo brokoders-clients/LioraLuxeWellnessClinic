@@ -1,170 +1,313 @@
-import Header from "@/components/header"
-import Footer from "@/components/footer"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Clock, Star, ArrowRight } from "lucide-react"
+"use client";
+import React from "react";
+import { motion } from "framer-motion";
+import Header from "@/components/header";
 
-export default function ServicesPage() {
-  const serviceCategories = [
+const PremiumWellnessServices = () => {
+  const services = [
     {
+      id: 1,
       title: "Aesthetic & Cosmetic Treatments",
-      description: "Advanced skincare and cosmetic procedures for radiant, youthful skin",
-      image: "/luxury-facial-treatment-room-with-modern-equipment.jpg",
+      description:
+        "Transform your skin with our advanced aesthetic treatments designed to enhance your natural beauty and restore youthful radiance.",
       treatments: [
-        { name: "Hydrafacial", duration: "60 min", price: "From $150", popular: true },
-        { name: "Medi-Facials", duration: "45 min", price: "From $120" },
-        { name: "Oxygen Facial", duration: "50 min", price: "From $130" },
-        { name: "Chemical Peels", duration: "30 min", price: "From $100" },
-        { name: "Laser Hair Reduction", duration: "30-90 min", price: "From $80" },
-        { name: "Pigmentation Treatment", duration: "45 min", price: "From $200" },
-        { name: "Tattoo Removal", duration: "30 min", price: "From $150" },
-        { name: "Microneedling", duration: "60 min", price: "From $180" },
-        { name: "PRP Facial", duration: "75 min", price: "From $250", popular: true },
-        { name: "MNRF Treatment", duration: "60 min", price: "From $300" },
-        { name: "Dermapen", duration: "45 min", price: "From $160" },
+        "Medi-facials, HydraFacial & Oxygen Facial",
+        "Chemical peels for skin renewal",
+        "Laser treatments (hair reduction, pigmentation)",
+        "Skin rejuvenation (microneedling, PRP, MNRF)",
+        "Advanced anti-aging therapies",
       ],
+      image:
+        "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop&crop=center",
+      imageAlt: "Luxurious facial treatment in serene spa setting",
     },
     {
+      id: 2,
       title: "Weight Loss & Body Contouring",
-      description: "Non-invasive body sculpting and comprehensive weight management solutions",
-      image: "/modern-body-contouring-treatment-room-with-advance.jpg",
+      description:
+        "Achieve your ideal body shape through our comprehensive weight management and non-invasive body sculpting solutions.",
       treatments: [
-        { name: "Diet & Nutrition Counseling", duration: "60 min", price: "From $80" },
-        { name: "Fat Freeze (Cryolipolysis)", duration: "60 min", price: "From $400", popular: true },
-        { name: "EMSCULPT", duration: "30 min", price: "From $350", popular: true },
-        { name: "Cavitation", duration: "45 min", price: "From $120" },
-        { name: "RF Body Sculpting", duration: "60 min", price: "From $200" },
-        { name: "Lipolytic Injections", duration: "30 min", price: "From $250" },
+        "Personalized diet & nutrition counseling",
+        "Fat freeze technology (cryolipolysis)",
+        "Advanced body sculpting (EMSCULPT, cavitation)",
+        "Targeted lipolytic injections",
+        "Holistic weight management programs",
       ],
+      image:
+        "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop&crop=center",
+      imageAlt: "Wellness and fitness consultation",
     },
     {
+      id: 3,
       title: "Hair Restoration",
-      description: "Advanced hair restoration treatments to combat hair loss and promote growth",
-      image: "/hair-restoration-clinic-with-professional-equipmen.jpg",
+      description:
+        "Restore confidence with our cutting-edge hair restoration treatments, addressing hair loss with proven scientific methods.",
       treatments: [
-        { name: "PRP for Hair Fall", duration: "60 min", price: "From $200", popular: true },
-        { name: "GFC Hair Treatment", duration: "75 min", price: "From $300" },
-        { name: "Hair Mesotherapy", duration: "45 min", price: "From $150" },
-        { name: "Hair Transplant Consultation", duration: "90 min", price: "Free" },
+        "PRP/GFC therapy for hair regeneration",
+        "Advanced hair mesotherapy",
+        "Comprehensive hair transplant consultation",
+        "Scalp rejuvenation treatments",
+        "Personalized hair care protocols",
       ],
+      image:
+        "https://images.unsplash.com/photo-1559599101-f09722fb4948?w=600&h=400&fit=crop&crop=center",
+      imageAlt: "Hair restoration consultation",
     },
     {
+      id: 4,
       title: "Wellness Therapies",
-      description: "Holistic wellness treatments for complete mind-body rejuvenation",
-      image: "/wellness-therapy-room-with-iv-drip-setup-and-calmi.jpg",
+      description:
+        "Nurture your body and mind with our holistic wellness therapies designed to detoxify, rejuvenate, and restore inner balance.",
       treatments: [
-        { name: "Detox Therapy", duration: "90 min", price: "From $120" },
-        { name: "Juice Cleanse Program", duration: "3-7 days", price: "From $200" },
-        { name: "Liver Detox", duration: "60 min", price: "From $150" },
-        { name: "Glutathione IV Drip", duration: "45 min", price: "From $180", popular: true },
-        { name: "Vitamin C IV Drip", duration: "30 min", price: "From $120" },
-        { name: "NAD+ IV Therapy", duration: "60 min", price: "From $300", popular: true },
-        { name: "Stress Management Therapy", duration: "60 min", price: "From $100" },
-        { name: "Guided Meditation", duration: "45 min", price: "From $60" },
-        { name: "Yoga Sessions", duration: "60 min", price: "From $40" },
+        "Comprehensive detox therapy programs",
+        "IV nutrient drips (glutathione, vitamin C, NAD+)",
+        "Stress management & meditation therapy",
+        "Liver detox & cleanse programs",
+        "Personalized wellness consultations",
       ],
+      image:
+        "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&h=400&fit=crop&crop=center",
+      imageAlt: "Peaceful wellness therapy session",
     },
-  ]
+  ];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3,
+        duration: 0.8,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 60, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+        ease: [0.25, 0.46, 0.45, 0.94],
+      },
+    },
+  };
+
+  const imageVariants = (isLeft) => ({
+    hidden: { x: isLeft ? -100 : 100, opacity: 0 },
+    visible: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        duration: 1,
+        ease: [0.25, 0.46, 0.45, 0.94],
+      },
+    },
+  });
 
   return (
-    <main className="min-h-screen">
-      <Header />
-
-      {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-primary/10 to-secondary/10">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">Our Premium Services</h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-            Discover our comprehensive range of wellness and aesthetic treatments designed to help you look and feel
-            your absolute best
-          </p>
-          <Button size="lg" className="px-8">
-            Book Free Consultation
-          </Button>
-        </div>
-      </section>
-
-      {/* Services Categories */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          {serviceCategories.map((category, categoryIndex) => (
-            <div key={categoryIndex} className="mb-20">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-12">
-                <div className={categoryIndex % 2 === 0 ? "order-1" : "order-2"}>
-                  <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">{category.title}</h2>
-                  <p className="text-lg text-muted-foreground mb-6">{category.description}</p>
-                  <Button variant="outline" size="lg">
-                    Learn More
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Button>
-                </div>
-                <div className={categoryIndex % 2 === 0 ? "order-2" : "order-1"}>
-                  <img
-                    src={category.image || "/placeholder.svg"}
-                    alt={category.title}
-                    className="w-full h-80 object-cover rounded-2xl shadow-lg"
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {category.treatments.map((treatment, treatmentIndex) => (
-                  <Card key={treatmentIndex} className="hover:shadow-lg transition-shadow">
-                    <CardHeader className="pb-3">
-                      <div className="flex items-center justify-between">
-                        <CardTitle className="text-lg">{treatment.name}</CardTitle>
-                        {treatment.popular && (
-                          <Badge className="bg-primary text-primary-foreground">
-                            <Star className="w-3 h-3 mr-1" />
-                            Popular
-                          </Badge>
-                        )}
-                      </div>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
-                        <div className="flex items-center">
-                          <Clock className="w-4 h-4 mr-1" />
-                          {treatment.duration}
-                        </div>
-                        <div className="font-semibold text-foreground">{treatment.price}</div>
-                      </div>
-                      <Button variant="outline" size="sm" className="w-full bg-transparent">
-                        Book Now
-                      </Button>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-primary text-primary-foreground">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Begin Your Transformation?</h2>
-          <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            Book your complimentary consultation and let our experts create a personalized treatment plan for you
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary">
-              Book Free Consultation
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-white text-white hover:bg-white hover:text-primary bg-transparent"
-            >
-              Call (555) 123-4567
-            </Button>
+    <>
+      <Header/>
+      <div className="min-h-screen bg-gradient-to-b from-[#fcfaf9] via-[#f7f2f2] to-[#f3e7e2]">
+        {/* Hero Section */}
+        <motion.section
+          className="relative py-24 px-6 text-center overflow-hidden"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+        >
+          {/* Background Gradient Shapes */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <motion.div
+              className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-[#f3e7e2]/30 to-transparent rounded-full blur-3xl"
+              animate={{
+                scale: [1, 1.1, 1],
+                rotate: [0, 180, 360],
+              }}
+              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            />
+            <motion.div
+              className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-[#4c4343]/10 to-transparent rounded-full blur-3xl"
+              animate={{
+                scale: [1.1, 1, 1.1],
+                rotate: [360, 180, 0],
+              }}
+              transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+            />
           </div>
-        </div>
-      </section>
 
-      <Footer />
-    </main>
-  )
-}
+          <div className="relative z-10 max-w-4xl mx-auto">
+            <motion.h1
+              className="text-6xl md:text-7xl font-bold text-[#4c4343] mb-6 leading-tight"
+              style={{ fontFamily: "Georgia, serif" }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+            >
+              Our Services
+            </motion.h1>
+
+            <motion.p
+              className="text-xl md:text-2xl text-[#4c4343]/80 font-light tracking-wide"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+            >
+              Premium care for your skin, body & wellness
+            </motion.p>
+
+            <motion.div
+              className="mt-8 w-24 h-1 bg-gradient-to-r from-[#4c4343] to-[#4c4343]/50 mx-auto rounded-full"
+              initial={{ width: 0 }}
+              animate={{ width: 96 }}
+              transition={{ delay: 0.8, duration: 0.8 }}
+            />
+          </div>
+        </motion.section>
+
+        {/* Services Section */}
+        <motion.section
+          className="py-20 px-6"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+        >
+          <div className="max-w-7xl mx-auto">
+            {services.map((service, index) => {
+              const isLeft = index % 2 === 0;
+
+              return (
+                <motion.div
+                  key={service.id}
+                  className={`grid lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-32 last:mb-0 ${
+                    isLeft ? "" : "lg:direction-rtl"
+                  }`}
+                  variants={itemVariants}
+                  whileInView="visible"
+                  initial="hidden"
+                  viewport={{ once: true, amount: 0.3 }}
+                >
+                  {/* Image */}
+                  <motion.div
+                    className={`relative group ${
+                      isLeft ? "lg:order-1" : "lg:order-2"
+                    }`}
+                    variants={imageVariants(isLeft)}
+                  >
+                    <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+                      <motion.img
+                        src={service.image}
+                        alt={service.imageAlt}
+                        className="w-full h-80 md:h-96 object-cover transition-transform duration-700"
+                        whileHover={{ scale: 1.05 }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#4c4343]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    </div>
+
+                    {/* Decorative Elements */}
+                    <div className="absolute -z-10 top-6 left-6 w-full h-full bg-[#f3e7e2] rounded-2xl" />
+                  </motion.div>
+
+                  {/* Content */}
+                  <motion.div
+                    className={`${isLeft ? "lg:order-2" : "lg:order-1"} ${
+                      isLeft ? "" : "lg:text-right lg:direction-ltr"
+                    }`}
+                    variants={itemVariants}
+                  >
+                    <motion.div
+                      className="bg-[#f7f2f2] p-10 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border border-[#f3e7e2]/50"
+                      whileHover={{ scale: 1.02 }}
+                    >
+                      <h3
+                        className="text-3xl md:text-4xl font-bold text-[#4c4343] mb-6 leading-tight"
+                        style={{ fontFamily: "Georgia, serif" }}
+                      >
+                        {service.title}
+                      </h3>
+
+                      <p className="text-lg text-[#4c4343]/80 mb-8 leading-relaxed font-light">
+                        {service.description}
+                      </p>
+
+                      <div className="space-y-4">
+                        {service.treatments.map((treatment, treatmentIndex) => (
+                          <motion.div
+                            key={treatmentIndex}
+                            className="flex items-start gap-3"
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ delay: treatmentIndex * 0.1 }}
+                          >
+                            <div className="w-2 h-2 rounded-full bg-[#4c4343] mt-3 flex-shrink-0" />
+                            <p className="text-[#4c4343]/70 leading-relaxed">
+                              {treatment}
+                            </p>
+                          </motion.div>
+                        ))}
+                      </div>
+
+                      <motion.button
+                        className="mt-8 px-8 py-3 bg-[#4c4343] text-white rounded-full font-medium hover:bg-[#4c4343]/90 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        Learn More
+                      </motion.button>
+                    </motion.div>
+                  </motion.div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </motion.section>
+
+        {/* Bottom CTA Section */}
+        <motion.section
+          className="py-20 px-6 bg-gradient-to-r from-[#f3e7e2] to-[#f7f2f2]"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+        >
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.h2
+              className="text-4xl md:text-5xl font-bold text-[#4c4343] mb-6"
+              style={{ fontFamily: "Georgia, serif" }}
+              initial={{ y: 30, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8 }}
+            >
+              Ready to Begin Your Wellness Journey?
+            </motion.h2>
+
+            <motion.p
+              className="text-xl text-[#4c4343]/80 mb-10 font-light"
+              initial={{ y: 30, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.2, duration: 0.8 }}
+            >
+              Schedule your consultation today and discover the perfect
+              treatment plan tailored just for you.
+            </motion.p>
+
+            <motion.button
+              className="px-12 py-4 bg-[#4c4343] text-white rounded-full text-lg font-medium hover:bg-[#4c4343]/90 transition-all duration-300 hover:shadow-xl hover:-translate-y-2"
+              initial={{ y: 30, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.4, duration: 0.8 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Book Consultation
+            </motion.button>
+          </div>
+        </motion.section>
+      </div>
+    </>
+  );
+};
+
+export default PremiumWellnessServices;

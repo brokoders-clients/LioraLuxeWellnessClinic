@@ -70,9 +70,9 @@ const HeroSection: React.FC = () => {
             {/* Main circular image container - Exact sizing and positioning */}
             <div className="w-[420px] h-[420px] lg:w-[500px] lg:h-[500px] rounded-full overflow-hidden bg-gradient-to-br from-pink-100 to-rose-200 shadow-xl border-4 border-white/50">
               <img
-                src="/api/placeholder/500/500"
+                src="./images/wellness.png"
                 alt="Beautiful woman with natural skincare"
-                className="w-full h-full object-cover object-center scale-110"
+                className="w-full h-full object-contain object-center scale-90"
               />
             </div>
 

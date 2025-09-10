@@ -1,335 +1,290 @@
-import Header from "@/components/header"
-import Footer from "@/components/footer"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { MapPin, Phone, Mail, Clock, Calendar, MessageCircle } from "lucide-react"
+"use client"
 
-export default function ContactPage() {
-  const contactInfo = [
-    {
-      icon: <Phone className="h-6 w-6 text-primary" />,
-      title: "Phone",
-      details: ["+1 (555) 123-4567", "Emergency: +1 (555) 123-4568"],
-      action: "Call Now",
-    },
-    {
-      icon: <Mail className="h-6 w-6 text-primary" />,
-      title: "Email",
-      details: ["info@serenitywellness.com", "appointments@serenitywellness.com"],
-      action: "Send Email",
-    },
-    {
-      icon: <MapPin className="h-6 w-6 text-primary" />,
-      title: "Location",
-      details: ["123 Wellness Avenue", "City, State 12345"],
-      action: "Get Directions",
-    },
-    {
-      icon: <Clock className="h-6 w-6 text-primary" />,
-      title: "Hours",
-      details: ["Mon-Fri: 9:00 AM - 7:00 PM", "Sat: 9:00 AM - 5:00 PM", "Sun: Closed"],
-      action: "View Schedule",
-    },
-  ]
+import React, { useRef, useEffect, useState } from 'react';
+import { MapPin, Phone, Mail, Clock, Send, User, MessageSquare } from 'lucide-react';
 
-  const services = [
-    "Aesthetic & Cosmetic Treatments",
-    "Weight Loss & Body Contouring",
-    "Hair Restoration",
-    "Wellness Therapies",
-    "General Consultation",
-  ]
+const ContactPage = () => {
+  const [isVisible, setIsVisible] = useState({});
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const sectionRefs = {
+    hero: useRef(null),
+    contact: useRef(null),
+    form: useRef(null),
+    map: useRef(null)
+  };
+
+  useEffect(() => {
+    const observers = {};
+    
+    Object.keys(sectionRefs).forEach(key => {
+      if (sectionRefs[key].current) {
+        observers[key] = new IntersectionObserver(
+          ([entry]) => {
+            if (entry.isIntersecting) {
+              setIsVisible(prev => ({ ...prev, [key]: true }));
+            }
+          },
+          { threshold: 0.2 }
+        );
+        observers[key].observe(sectionRefs[key].current);
+      }
+    });
+
+    // Initial hero animation
+    setTimeout(() => {
+      setIsVisible(prev => ({ ...prev, hero: true }));
+    }, 100);
+
+    return () => {
+      Object.values(observers).forEach(observer => observer.disconnect());
+    };
+  }, []);
+
+  const handleInputChange = (e) => {
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    
+    // Basic validation
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+      alert('Please fill in all required fields.');
+      return;
+    }
+    
+    setIsSubmitting(true);
+    
+    // Simulate form submission
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    
+    alert('Thank you for your message! We\'ll get back to you soon.');
+    setFormData({ name: '', email: '', phone: '', message: '' });
+    setIsSubmitting(false);
+  };
+
+  const AnimatedSection = ({ children, sectionKey, className = "", delay = 0 }) => {
+    const baseClasses = `transition-all duration-1000 ease-out ${className}`;
+    const visibleClasses = isVisible[sectionKey] 
+      ? 'opacity-100 translate-y-0 scale-100' 
+      : 'opacity-0 translate-y-8 scale-95';
+    
+    return (
+      <div 
+        ref={sectionRefs[sectionKey]}
+        className={`${baseClasses} ${visibleClasses}`}
+        style={{ transitionDelay: `${delay}ms` }}
+      >
+        {children}
+      </div>
+    );
+  };
 
   return (
-    <main className="min-h-screen">
-      <Header />
-
+    <div className="min-h-screen bg-gradient-to-br from-white via-[#fcfaf9] to-[#f3e7e2]">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-primary/10 to-secondary/10">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">Contact Us</h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-            Ready to begin your wellness journey? Get in touch with our expert team to schedule your consultation or ask
-            any questions
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="px-8">
-              <Calendar className="mr-2 h-5 w-5" />
-              Book Consultation
-            </Button>
-            <Button size="lg" variant="outline">
-              <Phone className="mr-2 h-5 w-5" />
-              Call (555) 123-4567
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Information */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Get In Touch</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              We're here to help you every step of the way. Reach out through any of these convenient methods
+      <AnimatedSection sectionKey="hero" className="relative pt-20 pb-16 px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="absolute inset-0 bg-gradient-to-r from-[#fcfaf9] via-[#f7f2f2] to-[#f3e7e2] opacity-60 rounded-3xl blur-3xl"></div>
+          <div className="relative z-10">
+            <h1 className="text-5xl md:text-6xl font-serif text-[#4c4343] mb-6 leading-tight">
+              Get in Touch
+            </h1>
+            <p className="text-xl md:text-2xl text-[#4c4343]/80 font-light max-w-2xl mx-auto leading-relaxed">
+              We're here to guide you on your wellness journey
             </p>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-            {contactInfo.map((info, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    {info.icon}
-                  </div>
-                  <CardTitle className="text-xl">{info.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-2 mb-4">
-                    {info.details.map((detail, idx) => (
-                      <p key={idx} className="text-muted-foreground">
-                        {detail}
-                      </p>
-                    ))}
-                  </div>
-                  <Button variant="outline" size="sm" className="w-full bg-transparent">
-                    {info.action}
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
         </div>
-      </section>
+      </AnimatedSection>
 
-      {/* Contact Form & Map */}
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Contact Form */}
-            <div>
-              <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-6">Send Us a Message</h3>
-              <p className="text-muted-foreground mb-8">
-                Fill out the form below and we'll get back to you within 24 hours to discuss your wellness goals and
-                schedule your consultation.
-              </p>
+      <div className="max-w-7xl mx-auto px-4 py-16 space-y-16">
+        {/* Contact Information Section */}
+        <AnimatedSection sectionKey="contact" delay={200}>
+          <div className="grid lg:grid-cols-2 gap-12">
+            <div className="bg-[#f7f2f2] rounded-2xl p-8 md:p-12 shadow-lg hover:shadow-xl transition-all duration-500">
+              <h2 className="text-3xl font-serif text-[#4c4343] mb-8">Contact Information</h2>
+              
+              <div className="space-y-6">
+                <div className="flex items-start gap-4 group">
+                  <div className="bg-[#4c4343] p-3 rounded-full group-hover:scale-110 transition-transform duration-300">
+                    <MapPin className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-[#4c4343] mb-1">Address</h3>
+                    <p className="text-[#4c4343]/70 leading-relaxed">
+                      D19, Basement, Defence Colony<br />
+                      New Delhi, Delhi - 110024
+                    </p>
+                  </div>
+                </div>
 
-              <Card>
-                <CardContent className="p-6">
-                  <form className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div>
-                        <Label htmlFor="firstName">First Name *</Label>
-                        <Input id="firstName" placeholder="Enter your first name" />
-                      </div>
-                      <div>
-                        <Label htmlFor="lastName">Last Name *</Label>
-                        <Input id="lastName" placeholder="Enter your last name" />
-                      </div>
+                <div className="flex items-start gap-4 group">
+                  <div className="bg-[#4c4343] p-3 rounded-full group-hover:scale-110 transition-transform duration-300">
+                    <Phone className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-[#4c4343] mb-1">Phone</h3>
+                    <p className="text-[#4c4343]/70">+91 98765 43210</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4 group">
+                  <div className="bg-[#4c4343] p-3 rounded-full group-hover:scale-110 transition-transform duration-300">
+                    <Mail className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-[#4c4343] mb-1">Email</h3>
+                    <p className="text-[#4c4343]/70">hello@wellnessjourney.com</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4 group">
+                  <div className="bg-[#4c4343] p-3 rounded-full group-hover:scale-110 transition-transform duration-300">
+                    <Clock className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-[#4c4343] mb-1">Business Hours</h3>
+                    <div className="text-[#4c4343]/70 space-y-1">
+                      <p>Monday - Friday: 9:00 AM - 7:00 PM</p>
+                      <p>Saturday: 10:00 AM - 5:00 PM</p>
+                      <p>Sunday: Closed</p>
                     </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div>
-                        <Label htmlFor="email">Email *</Label>
-                        <Input id="email" type="email" placeholder="Enter your email" />
-                      </div>
-                      <div>
-                        <Label htmlFor="phone">Phone Number</Label>
-                        <Input id="phone" type="tel" placeholder="Enter your phone number" />
-                      </div>
-                    </div>
-
-                    <div>
-                      <Label htmlFor="service">Service of Interest</Label>
-                      <Select>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select a service" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {services.map((service, index) => (
-                            <SelectItem key={index} value={service.toLowerCase().replace(/\s+/g, "-")}>
-                              {service}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
-
-                    <div>
-                      <Label htmlFor="message">Message *</Label>
-                      <Textarea
-                        id="message"
-                        placeholder="Tell us about your wellness goals and any questions you have..."
-                        rows={5}
-                      />
-                    </div>
-
-                    <div className="flex items-center space-x-2">
-                      <input type="checkbox" id="consent" className="rounded" />
-                      <Label htmlFor="consent" className="text-sm text-muted-foreground">
-                        I consent to being contacted about my wellness consultation
-                      </Label>
-                    </div>
-
-                    <Button type="submit" size="lg" className="w-full">
-                      <MessageCircle className="mr-2 h-5 w-5" />
-                      Send Message
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
-            </div>
-
-            {/* Map & Location Info */}
-            <div>
-              <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-6">Visit Our Center</h3>
-              <p className="text-muted-foreground mb-8">
-                Located in the heart of the city, our beautiful wellness center is easily accessible with ample parking
-                available.
-              </p>
-
-              {/* Map Placeholder */}
-              <div className="bg-muted rounded-lg h-64 mb-6 flex items-center justify-center">
-                <div className="text-center">
-                  <MapPin className="h-12 w-12 text-primary mx-auto mb-2" />
-                  <p className="text-muted-foreground">Interactive Map</p>
-                  <p className="text-sm text-muted-foreground">123 Wellness Avenue, City, State 12345</p>
+                  </div>
                 </div>
               </div>
+            </div>
 
-              <Card>
-                <CardContent className="p-6">
-                  <h4 className="font-semibold text-foreground mb-4">Location Details</h4>
-                  <div className="space-y-3">
-                    <div className="flex items-start gap-3">
-                      <MapPin className="h-5 w-5 text-primary mt-0.5" />
-                      <div>
-                        <p className="font-medium">Address</p>
-                        <p className="text-muted-foreground">
-                          123 Wellness Avenue
-                          <br />
-                          City, State 12345
-                        </p>
+            {/* Contact Form */}
+            <AnimatedSection sectionKey="form" delay={400}>
+              <div className="bg-[#f3e7e2] rounded-2xl p-8 md:p-12 shadow-lg">
+                <h2 className="text-3xl font-serif text-[#4c4343] mb-8">Send us a Message</h2>
+                
+                <div className="space-y-6">
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="group">
+                      <label className="block text-sm font-medium text-[#4c4343] mb-2">
+                        Name *
+                      </label>
+                      <div className="relative">
+                        <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#4c4343]/60" />
+                        <input
+                          type="text"
+                          name="name"
+                          value={formData.name}
+                          onChange={handleInputChange}
+                          required
+                          className="w-full pl-12 pr-4 py-3 bg-white/80 border border-[#4c4343]/20 rounded-xl focus:border-[#4c4343] focus:ring-2 focus:ring-[#4c4343]/20 focus:bg-white transition-all duration-300 placeholder-[#4c4343]/50"
+                          placeholder="Your name"
+                        />
                       </div>
                     </div>
-                    <div className="flex items-start gap-3">
-                      <Clock className="h-5 w-5 text-primary mt-0.5" />
-                      <div>
-                        <p className="font-medium">Parking</p>
-                        <p className="text-muted-foreground">
-                          Free parking available
-                          <br />
-                          Valet service on weekends
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <Phone className="h-5 w-5 text-primary mt-0.5" />
-                      <div>
-                        <p className="font-medium">Public Transport</p>
-                        <p className="text-muted-foreground">
-                          Metro Station: 2 blocks away
-                          <br />
-                          Bus Stop: Right outside
-                        </p>
+
+                    <div className="group">
+                      <label className="block text-sm font-medium text-[#4c4343] mb-2">
+                        Email *
+                      </label>
+                      <div className="relative">
+                        <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#4c4343]/60" />
+                        <input
+                          type="email"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleInputChange}
+                          required
+                          className="w-full pl-12 pr-4 py-3 bg-white/80 border border-[#4c4343]/20 rounded-xl focus:border-[#4c4343] focus:ring-2 focus:ring-[#4c4343]/20 focus:bg-white transition-all duration-300 placeholder-[#4c4343]/50"
+                          placeholder="your@email.com"
+                        />
                       </div>
                     </div>
                   </div>
 
-                  <Button variant="outline" className="w-full mt-6 bg-transparent">
-                    Get Directions
-                  </Button>
-                </CardContent>
-              </Card>
+                  <div className="group">
+                    <label className="block text-sm font-medium text-[#4c4343] mb-2">
+                      Phone (Optional)
+                    </label>
+                    <div className="relative">
+                      <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#4c4343]/60" />
+                      <input
+                        type="tel"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleInputChange}
+                        className="w-full pl-12 pr-4 py-3 bg-white/80 border border-[#4c4343]/20 rounded-xl focus:border-[#4c4343] focus:ring-2 focus:ring-[#4c4343]/20 focus:bg-white transition-all duration-300 placeholder-[#4c4343]/50"
+                        placeholder="+91 98765 43210"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="group">
+                    <label className="block text-sm font-medium text-[#4c4343] mb-2">
+                      Message *
+                    </label>
+                    <div className="relative">
+                      <MessageSquare className="absolute left-3 top-4 w-5 h-5 text-[#4c4343]/60" />
+                      <textarea
+                        name="message"
+                        value={formData.message}
+                        onChange={handleInputChange}
+                        required
+                        rows="5"
+                        className="w-full pl-12 pr-4 py-3 bg-white/80 border border-[#4c4343]/20 rounded-xl focus:border-[#4c4343] focus:ring-2 focus:ring-[#4c4343]/20 focus:bg-white transition-all duration-300 placeholder-[#4c4343]/50 resize-none"
+                        placeholder="Tell us about your wellness goals and how we can help you..."
+                      />
+                    </div>
+                  </div>
+
+                  <button
+                    onClick={handleSubmit}
+                    disabled={isSubmitting}
+                    className="w-full bg-[#4c4343] text-white py-4 px-6 rounded-xl font-semibold text-lg hover:bg-[#3a3030] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
+                  >
+                    {isSubmitting ? (
+                      <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    ) : (
+                      <>
+                        <Send className="w-5 h-5" />
+                        Send Message
+                      </>
+                    )}
+                  </button>
+                </div>
+              </div>
+            </AnimatedSection>
+          </div>
+        </AnimatedSection>
+
+        {/* Map Section */}
+        <AnimatedSection sectionKey="map" delay={600}>
+          <div className="bg-white/60 rounded-2xl p-6 shadow-lg">
+            <h2 className="text-3xl font-serif text-[#4c4343] mb-6 text-center">Find Us</h2>
+            <div className="relative overflow-hidden rounded-xl shadow-lg">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.2822!2d77.2235!3d28.5672!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce26b7d1b02a9%3A0x1f1f1f1f1f1f1f1f!2sDefence%20Colony%2C%20New%20Delhi%2C%20Delhi!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin"
+                width="100%"
+                height="400"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="w-full h-96 rounded-xl"
+              ></iframe>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none rounded-xl"></div>
             </div>
           </div>
-        </div>
-      </section>
+        </AnimatedSection>
+      </div>
+    </div>
+  );
+};
 
-      {/* FAQ Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Frequently Asked Questions</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Quick answers to common questions about our services and booking process
-            </p>
-          </div>
-
-          <div className="max-w-3xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Card>
-                <CardContent className="p-6">
-                  <h4 className="font-semibold text-foreground mb-3">How do I book an appointment?</h4>
-                  <p className="text-muted-foreground text-sm">
-                    You can book online, call us, or visit our center. We recommend booking 1-2 weeks in advance for
-                    popular treatments.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardContent className="p-6">
-                  <h4 className="font-semibold text-foreground mb-3">Is consultation really free?</h4>
-                  <p className="text-muted-foreground text-sm">
-                    Yes! Your initial consultation is completely free with no obligation. We'll assess your needs and
-                    create a personalized plan.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardContent className="p-6">
-                  <h4 className="font-semibold text-foreground mb-3">What should I expect on my first visit?</h4>
-                  <p className="text-muted-foreground text-sm">
-                    A comprehensive consultation, facility tour, and personalized treatment recommendations based on
-                    your goals.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardContent className="p-6">
-                  <h4 className="font-semibold text-foreground mb-3">Do you offer payment plans?</h4>
-                  <p className="text-muted-foreground text-sm">
-                    Yes, we offer flexible payment options and financing plans to make your wellness journey affordable.
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Emergency Contact */}
-      <section className="py-20 bg-primary text-primary-foreground">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Need Immediate Assistance?</h2>
-          <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            For urgent matters or after-hours support, our emergency line is available 24/7
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary">
-              <Phone className="mr-2 h-5 w-5" />
-              Emergency: (555) 123-4568
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-white text-white hover:bg-white hover:text-primary bg-transparent"
-            >
-              <MessageCircle className="mr-2 h-5 w-5" />
-              Live Chat Support
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      <Footer />
-    </main>
-  )
-}
+export default ContactPage;
