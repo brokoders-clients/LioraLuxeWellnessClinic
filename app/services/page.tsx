@@ -208,7 +208,7 @@ const PremiumWellnessServices = () => {
                   {/* Content */}
                   <motion.div
                     className={`${isLeft ? "lg:order-2" : "lg:order-1"} ${
-                      isLeft ? "" : "lg:text-right lg:direction-ltr"
+                      isLeft ? "" : "lg:text-left lg:direction-ltr"
                     }`}
                     variants={itemVariants}
                   >
@@ -237,13 +237,13 @@ const PremiumWellnessServices = () => {
                         ))}
                       </div>
 
-                      <motion.button
+                      {/* <motion.button
                         className="mt-10 px-8 py-3 bg-gray-900 text-white rounded-full font-light tracking-wide hover:bg-gray-800 transition-colors duration-300"
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                       >
                         Learn More
-                      </motion.button>
+                      </motion.button> */}
                     </div>
                   </motion.div>
                 </motion.div>
