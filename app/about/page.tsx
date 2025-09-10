@@ -1,267 +1,176 @@
-import Header from "@/components/header"
-import Footer from "@/components/footer"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Award, Users, Heart, Shield, Clock, Star } from "lucide-react"
+import { Users, Award, Clock, MapPin, Heart } from "lucide-react";
 
-export default function AboutPage() {
-  const teamMembers = [
-    {
-      name: "Dr. Sarah Johnson",
-      role: "Medical Director & Aesthetic Physician",
-      image: "/images/doctor-1.png",
-      credentials: ["MD", "Board Certified", "15+ Years Experience"],
-      specialties: ["Aesthetic Medicine", "Anti-Aging", "Laser Treatments"],
-    },
-    {
-      name: "Dr. Michael Chen",
-      role: "Wellness & Weight Management Specialist",
-      image: "/professional-male-doctor-in-medical-attire.jpg",
-      credentials: ["MD", "Nutrition Specialist", "10+ Years Experience"],
-      specialties: ["Weight Management", "Metabolic Health", "Body Contouring"],
-    },
-    {
-      name: "Lisa Rodriguez",
-      role: "Senior Aesthetician & Wellness Coach",
-      image: "/professional-female-aesthetician-in-spa-uniform.jpg",
-      credentials: ["Licensed Aesthetician", "Certified Wellness Coach"],
-      specialties: ["Skincare", "Facials", "Wellness Therapy"],
-    },
-    {
-      name: "James Wilson",
-      role: "Hair Restoration Specialist",
-      image: "/professional-male-hair-specialist-in-clinic-settin.jpg",
-      credentials: ["Certified Trichologist", "PRP Specialist"],
-      specialties: ["Hair Restoration", "PRP Therapy", "Hair Transplant"],
-    },
-  ]
-
+export default function AboutUs() {
   const values = [
     {
-      icon: <Heart className="h-8 w-8 text-primary" />,
-      title: "Compassionate Care",
-      description: "We treat every client with empathy, understanding, and genuine care for their wellbeing.",
+      icon: <Award className="h-6 w-6 text-rose-500" />,
+      title: "Excellence",
+      description:
+        "We maintain the highest standards in all our treatments and services.",
     },
     {
-      icon: <Shield className="h-8 w-8 text-primary" />,
-      title: "Safety & Excellence",
-      description: "We maintain the highest standards of safety and quality in all our treatments and procedures.",
+      icon: <Users className="h-6 w-6 text-rose-500" />,
+      title: "Personalized Care",
+      description:
+        "Every treatment plan is tailored to your unique needs and goals.",
     },
     {
-      icon: <Users className="h-8 w-8 text-primary" />,
-      title: "Personalized Approach",
-      description: "Every treatment plan is customized to meet your unique needs, goals, and lifestyle.",
+      icon: <Heart className="h-6 w-6 text-rose-500" />,
+      title: "Holistic Wellness",
+      description: "We focus on your complete well-being, inside and out.",
     },
     {
-      icon: <Award className="h-8 w-8 text-primary" />,
-      title: "Continuous Innovation",
-      description: "We stay at the forefront of wellness technology and treatment methodologies.",
+      icon: <Clock className="h-6 w-6 text-rose-500" />,
+      title: "Trusted Experience",
+      description:
+        "Over 8 years of helping clients achieve their wellness goals.",
     },
-  ]
+  ];
+
+  const team = [
+    {
+      name: "Dr. Sarah Johnson",
+      role: "Medical Director",
+      specialty: "Aesthetic Medicine & Wellness",
+      image: "/team-1.jpg",
+    },
+    {
+      name: "Emily Chen",
+      role: "Lead Aesthetician",
+      specialty: "Advanced Skincare Treatments",
+      image: "/team-2.jpg",
+    },
+    {
+      name: "Michael Rodriguez",
+      role: "Wellness Coach",
+      specialty: "Nutrition & Lifestyle Coaching",
+      image: "/team-3.jpg",
+    },
+  ];
 
   return (
-    <main className="min-h-screen">
-      <Header />
+    <div className="min-h-screen bg-gradient-to-br from-stone-50 to-rose-50 relative overflow-hidden">
+      {/* Decorative Elements */}
+      <div className="absolute top-10 left-10 w-8 h-8 bg-gradient-to-br from-rose-200 to-rose-300 rounded-full opacity-60 transform rotate-45"></div>
+      <div className="absolute top-32 right-20 w-6 h-6 bg-gradient-to-br from-pink-200 to-pink-300 rounded-full opacity-50 transform -rotate-12"></div>
+      <div className="absolute bottom-20 left-1/4 w-10 h-10 bg-gradient-to-br from-rose-300 to-rose-400 rounded-full opacity-40 transform rotate-12"></div>
 
-      {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-primary/10 to-secondary/10">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">About Serenity Wellness</h1>
-              <p className="text-xl text-muted-foreground mb-8">
-                For over 15 years, we've been dedicated to helping thousands of clients achieve their wellness and
-                aesthetic goals through innovative treatments and compassionate care.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg">Book Consultation</Button>
-                <Button size="lg" variant="outline">
-                  Our Story
-                </Button>
-              </div>
-            </div>
-            <div>
-              <img
-                src="/placeholder.svg?height=500&width=600"
-                alt="Serenity Wellness Center"
-                className="w-full h-96 object-cover rounded-2xl shadow-lg"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Mission & Vision */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Our Mission & Vision</h2>
-            <p className="text-lg text-muted-foreground">
-              We believe that everyone deserves to feel confident and beautiful in their own skin. Our mission is to
-              provide world-class wellness and aesthetic treatments in a safe, comfortable, and nurturing environment.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <Card className="p-8 text-center">
-              <CardContent className="pt-0">
-                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Heart className="h-8 w-8 text-primary" />
-                </div>
-                <h3 className="text-2xl font-bold text-foreground mb-4">Our Mission</h3>
-                <p className="text-muted-foreground">
-                  To empower individuals on their wellness journey by providing innovative, safe, and effective
-                  treatments that enhance both inner confidence and outer beauty.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="p-8 text-center">
-              <CardContent className="pt-0">
-                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Star className="h-8 w-8 text-primary" />
-                </div>
-                <h3 className="text-2xl font-bold text-foreground mb-4">Our Vision</h3>
-                <p className="text-muted-foreground">
-                  To be the leading wellness destination, recognized for our commitment to excellence, innovation, and
-                  the transformative results we deliver to our clients.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Values */}
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Our Core Values</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              These principles guide everything we do and shape the exceptional experience we provide to every client
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value, index) => (
-              <div key={index} className="text-center">
-                <div className="bg-background rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 shadow-lg">
-                  {value.icon}
-                </div>
-                <h3 className="text-xl font-semibold text-foreground mb-3">{value.title}</h3>
-                <p className="text-muted-foreground">{value.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Team */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Meet Our Expert Team</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Our highly qualified professionals are dedicated to providing you with the best possible care and results
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {teamMembers.map((member, index) => (
-              <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="relative">
-                  <img
-                    src={member.image || "/placeholder.svg"}
-                    alt={member.name}
-                    className="w-full h-64 object-cover"
-                  />
-                </div>
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-bold text-foreground mb-2">{member.name}</h3>
-                  <p className="text-primary font-medium mb-4">{member.role}</p>
-
-                  <div className="mb-4">
-                    <div className="flex flex-wrap gap-1 mb-2">
-                      {member.credentials.map((credential, idx) => (
-                        <Badge key={idx} variant="secondary" className="text-xs">
-                          {credential}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div>
-                    <p className="text-sm font-medium text-foreground mb-2">Specialties:</p>
-                    <div className="flex flex-wrap gap-1">
-                      {member.specialties.map((specialty, idx) => (
-                        <Badge key={idx} variant="outline" className="text-xs">
-                          {specialty}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Stats */}
-      <section className="py-20 bg-primary text-primary-foreground">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Track Record</h2>
-            <p className="text-lg opacity-90">Numbers that speak to our commitment and success</p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold mb-2">15+</div>
-              <div className="text-lg opacity-90">Years of Excellence</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold mb-2">10,000+</div>
-              <div className="text-lg opacity-90">Happy Clients</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold mb-2">50+</div>
-              <div className="text-lg opacity-90">Treatment Options</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold mb-2">98%</div>
-              <div className="text-lg opacity-90">Satisfaction Rate</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-20 bg-gradient-to-r from-secondary to-primary text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Start Your Wellness Journey?</h2>
-          <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            Join thousands of satisfied clients who have transformed their lives with our expert care and innovative
-            treatments
+      <div className="container mx-auto px-4 py-20 relative z-10">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h1 className="text-4xl md:text-5xl font-serif text-stone-800 mb-6">
+            About Serenity Wellness
+          </h1>
+          <p className="text-lg text-stone-600 max-w-3xl mx-auto leading-relaxed">
+            Founded on the belief that true beauty comes from within, we've been
+            dedicated to helping our clients achieve optimal wellness and
+            confidence for over eight years.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary">
-              <Clock className="mr-2 h-5 w-5" />
-              Book Free Consultation
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-white text-white hover:bg-white hover:text-primary bg-transparent"
-            >
-              Call (555) 123-4567
-            </Button>
+        </div>
+
+        {/* Story Section */}
+        <div className="grid lg:grid-cols-2 gap-12 mb-20">
+          <div>
+            <h2 className="text-3xl font-serif text-stone-800 mb-6">
+              Our Story
+            </h2>
+            <div className="space-y-4 text-stone-600 leading-relaxed">
+              <p>
+                Serenity Wellness Center was born from a vision to create a
+                sanctuary where health, beauty, and well-being converge. Our
+                journey began with a simple mission: to provide personalized,
+                cutting-edge treatments in an environment that promotes healing
+                and transformation.
+              </p>
+              <p>
+                What started as a small practice has grown into a comprehensive
+                wellness destination, serving thousands of clients who trust us
+                with their aesthetic and wellness needs. We've built our
+                reputation on delivering exceptional results while maintaining
+                the highest standards of care and professionalism.
+              </p>
+              <p>
+                Today, we continue to evolve, incorporating the latest
+                advancements in aesthetic medicine and wellness therapies to
+                ensure our clients receive the most effective treatments
+                available.
+              </p>
+            </div>
+          </div>
+          <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-8 shadow-lg">
+            <div className="text-center mb-6">
+              <MapPin className="h-8 w-8 text-rose-500 mx-auto mb-4" />
+              <h3 className="text-xl font-serif font-semibold text-stone-800 mb-2">
+                Visit Our Center
+              </h3>
+              <p className="text-stone-600">
+                Experience our state-of-the-art facilities designed for your
+                comfort and privacy.
+              </p>
+            </div>
+            <div className="space-y-4 text-stone-600">
+              <div>
+                <strong>Location:</strong> 123 Wellness Avenue, City, State
+                12345
+              </div>
+              <div>
+                <strong>Hours:</strong> Monday - Saturday: 9AM - 7PM, Sunday:
+                10AM - 5PM
+              </div>
+              <div>
+                <strong>Phone:</strong> +1 (555) 123-4567
+              </div>
+            </div>
           </div>
         </div>
-      </section>
 
-      <Footer />
-    </main>
-  )
+        {/* Values Section */}
+        <div className="mb-20">
+          <h2 className="text-3xl font-serif text-stone-800 text-center mb-12">
+            Our Values
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {values.map((value, index) => (
+              <div
+                key={index}
+                className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 text-center shadow-lg"
+              >
+                <div className="mb-4 flex justify-center">{value.icon}</div>
+                <h3 className="font-serif font-semibold text-stone-800 mb-3">
+                  {value.title}
+                </h3>
+                <p className="text-stone-600 text-sm leading-relaxed">
+                  {value.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Team Section */}
+        <div>
+          <h2 className="text-3xl font-serif text-stone-800 text-center mb-12">
+            Meet Our Team
+          </h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {team.map((member, index) => (
+              <div
+                key={index}
+                className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 text-center shadow-lg"
+              >
+                <div className="w-24 h-24 bg-gradient-to-br from-rose-200 to-rose-300 rounded-full mx-auto mb-4 flex items-center justify-center">
+                  <Users className="h-8 w-8 text-rose-600" />
+                </div>
+                <h3 className="font-serif font-semibold text-stone-800 mb-2">
+                  {member.name}
+                </h3>
+                <p className="text-rose-500 font-medium mb-2">{member.role}</p>
+                <p className="text-stone-600 text-sm">{member.specialty}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }

@@ -1,112 +1,68 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Sparkles, Scale, Armchair as Hair, Heart } from "lucide-react"
+import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 
 const services = [
   {
-    category: "Aesthetic & Cosmetic Treatments",
-    icon: Sparkles,
-    color: "text-accent",
-    treatments: [
-      "Medi-facials & HydraFacial",
-      "Oxygen Facial Therapy",
-      "Chemical Peels",
-      "Laser Hair Reduction",
-      "Pigmentation Treatment",
-      "Tattoo Removal",
-      "Microneedling & PRP",
-      "MNRF & Dermapen",
-      "Anti-aging Treatments",
-    ],
+    title: "Hydro Therapy",
+    image: "/hydro-therapy.jpg",
+    alt: "Woman with face mask relaxing",
   },
   {
-    category: "Weight Loss & Body Contouring",
-    icon: Scale,
-    color: "text-primary",
-    treatments: [
-      "Personalized Diet Counseling",
-      "Nutrition Planning",
-      "Fat Freeze (Cryolipolysis)",
-      "EMSCULPT Body Sculpting",
-      "Cavitation Therapy",
-      "RF Body Contouring",
-      "Lipolytic Injections",
-    ],
+    title: "Sauna Rooms",
+    image: "/sauna-rooms.jpg",
+    alt: "Spa stones and candles",
   },
   {
-    category: "Hair Restoration",
-    icon: Hair,
-    color: "text-accent",
-    treatments: [
-      "PRP/GFC for Hair Fall",
-      "Hair Mesotherapy",
-      "Hair Transplant Consultation",
-      "Scalp Analysis",
-      "Hair Growth Therapy",
-    ],
+    title: "Massages",
+    image: "/massages.jpg",
+    alt: "Relaxing massage therapy",
   },
   {
-    category: "Wellness Therapies",
-    icon: Heart,
-    color: "text-primary",
-    treatments: [
-      "Detox Therapy Programs",
-      "Juice Cleanse Programs",
-      "Liver Detox Therapy",
-      "IV Drip Therapy",
-      "Glutathione Infusions",
-      "Vitamin C Therapy",
-      "NAD+ Treatments",
-      "Stress Management",
-      "Guided Meditation",
-      "Therapeutic Yoga",
-    ],
+    title: "Reflexology",
+    image: "/reflexology.jpg",
+    alt: "Foot massage and reflexology",
   },
-]
+];
 
 export default function ServicesSection() {
   return (
-    <section id="services" className="py-20 bg-card">
-      <div className="container mx-auto px-4">
+    <section className="py-20 px-6 bg-white">
+      <div className="max-w-6xl mx-auto">
+        {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-card-foreground mb-4">Comprehensive Wellness Services</h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-pretty">
-            Discover our full range of premium treatments designed to enhance your natural beauty, boost your
-            confidence, and optimize your overall wellness.
+          <h2 className="text-4xl md:text-5xl font-serif text-gray-800 mb-4">
+            Services
+          </h2>
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+            Relaxation of body and mind in which time does not exist.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {services.map((service, index) => {
-            const IconComponent = service.icon
-            return (
-              <Card key={index} className="border-border hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className={`p-2 rounded-lg bg-card ${service.color}`}>
-                      <IconComponent className="h-6 w-6" />
-                    </div>
-                    <CardTitle className="text-xl text-card-foreground">{service.category}</CardTitle>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid gap-2">
-                    {service.treatments.map((treatment, treatmentIndex) => (
-                      <div key={treatmentIndex} className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-accent"></div>
-                        <span className="text-muted-foreground">{treatment}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <Button className="w-full mt-6 bg-transparent" variant="outline">
-                    Learn More
-                  </Button>
-                </CardContent>
-              </Card>
-            )
-          })}
+        {/* Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {services.map((service, index) => (
+            <div key={index} className="text-center group cursor-pointer">
+              {/* Circular Image */}
+              <div className="relative w-48 h-48 mx-auto mb-6 overflow-hidden rounded-full shadow-lg group-hover:shadow-xl transition-shadow duration-300">
+                <Image
+                  src={service.image || "/placeholder.svg"}
+                  alt={service.alt}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+
+              {/* Service Title with Arrow */}
+              <div className="flex items-center justify-center gap-2 group-hover:gap-3 transition-all duration-300">
+                <h3 className="text-lg font-medium text-gray-800">
+                  {service.title}
+                </h3>
+                <ArrowRight className="w-4 h-4 text-gray-600 group-hover:text-pink-400 transition-colors duration-300" />
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
-  )
+  );
 }
