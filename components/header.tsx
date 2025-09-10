@@ -26,28 +26,34 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             <Link
+              href="/"
+              className="text-gray-600 hover:text-gray-800 transition-colors font-medium tracking-wider text-sm uppercase"
+            >
+              Home
+            </Link>
+            <Link
               href="/services"
               className="text-gray-600 hover:text-gray-800 transition-colors font-medium tracking-wider text-sm uppercase"
             >
               Services
             </Link>
             <Link
-              href="/careers"
+              href="/faq"
               className="text-gray-600 hover:text-gray-800 transition-colors font-medium tracking-wider text-sm uppercase"
             >
-              Careers
+              FAQ
             </Link>
             <Link
-              href="/shop"
+              href="/blogs"
               className="text-gray-600 hover:text-gray-800 transition-colors font-medium tracking-wider text-sm uppercase"
             >
-              Shop
+              Blogs
             </Link>
             <Link
-              href="/social"
+              href="/contact"
               className="text-gray-600 hover:text-gray-800 transition-colors font-medium tracking-wider text-sm uppercase"
             >
-              Social
+              Contact
             </Link>
           </nav>
 

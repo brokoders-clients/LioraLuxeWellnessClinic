@@ -1,170 +1,146 @@
-import Header from "@/components/header"
-import Footer from "@/components/footer"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Clock, Star, ArrowRight } from "lucide-react"
+import { Sparkles, Heart, Zap, Droplets, Leaf, Star } from "lucide-react";
 
-export default function ServicesPage() {
-  const serviceCategories = [
+export default function OurServices() {
+  const services = [
     {
-      title: "Aesthetic & Cosmetic Treatments",
-      description: "Advanced skincare and cosmetic procedures for radiant, youthful skin",
-      image: "/luxury-facial-treatment-room-with-modern-equipment.jpg",
-      treatments: [
-        { name: "Hydrafacial", duration: "60 min", price: "From $150", popular: true },
-        { name: "Medi-Facials", duration: "45 min", price: "From $120" },
-        { name: "Oxygen Facial", duration: "50 min", price: "From $130" },
-        { name: "Chemical Peels", duration: "30 min", price: "From $100" },
-        { name: "Laser Hair Reduction", duration: "30-90 min", price: "From $80" },
-        { name: "Pigmentation Treatment", duration: "45 min", price: "From $200" },
-        { name: "Tattoo Removal", duration: "30 min", price: "From $150" },
-        { name: "Microneedling", duration: "60 min", price: "From $180" },
-        { name: "PRP Facial", duration: "75 min", price: "From $250", popular: true },
-        { name: "MNRF Treatment", duration: "60 min", price: "From $300" },
-        { name: "Dermapen", duration: "45 min", price: "From $160" },
+      icon: <Sparkles className="h-8 w-8 text-rose-500" />,
+      title: "Aesthetic Treatments",
+      description:
+        "Advanced facial treatments, anti-aging therapies, and skin rejuvenation procedures tailored to your unique needs.",
+      features: [
+        "Botox & Fillers",
+        "Chemical Peels",
+        "Microdermabrasion",
+        "Laser Therapy",
       ],
     },
     {
-      title: "Weight Loss & Body Contouring",
-      description: "Non-invasive body sculpting and comprehensive weight management solutions",
-      image: "/modern-body-contouring-treatment-room-with-advance.jpg",
-      treatments: [
-        { name: "Diet & Nutrition Counseling", duration: "60 min", price: "From $80" },
-        { name: "Fat Freeze (Cryolipolysis)", duration: "60 min", price: "From $400", popular: true },
-        { name: "EMSCULPT", duration: "30 min", price: "From $350", popular: true },
-        { name: "Cavitation", duration: "45 min", price: "From $120" },
-        { name: "RF Body Sculpting", duration: "60 min", price: "From $200" },
-        { name: "Lipolytic Injections", duration: "30 min", price: "From $250" },
+      icon: <Heart className="h-8 w-8 text-rose-500" />,
+      title: "Weight Loss Programs",
+      description:
+        "Comprehensive weight management solutions combining nutrition counseling, fitness planning, and medical supervision.",
+      features: [
+        "Personalized Diet Plans",
+        "Fitness Coaching",
+        "Medical Monitoring",
+        "Lifestyle Counseling",
       ],
     },
     {
+      icon: <Zap className="h-8 w-8 text-rose-500" />,
       title: "Hair Restoration",
-      description: "Advanced hair restoration treatments to combat hair loss and promote growth",
-      image: "/hair-restoration-clinic-with-professional-equipmen.jpg",
-      treatments: [
-        { name: "PRP for Hair Fall", duration: "60 min", price: "From $200", popular: true },
-        { name: "GFC Hair Treatment", duration: "75 min", price: "From $300" },
-        { name: "Hair Mesotherapy", duration: "45 min", price: "From $150" },
-        { name: "Hair Transplant Consultation", duration: "90 min", price: "Free" },
+      description:
+        "Advanced hair restoration treatments to help you regain confidence with fuller, healthier hair.",
+      features: [
+        "PRP Therapy",
+        "Hair Transplants",
+        "Scalp Treatments",
+        "Nutritional Support",
       ],
     },
     {
-      title: "Wellness Therapies",
-      description: "Holistic wellness treatments for complete mind-body rejuvenation",
-      image: "/wellness-therapy-room-with-iv-drip-setup-and-calmi.jpg",
-      treatments: [
-        { name: "Detox Therapy", duration: "90 min", price: "From $120" },
-        { name: "Juice Cleanse Program", duration: "3-7 days", price: "From $200" },
-        { name: "Liver Detox", duration: "60 min", price: "From $150" },
-        { name: "Glutathione IV Drip", duration: "45 min", price: "From $180", popular: true },
-        { name: "Vitamin C IV Drip", duration: "30 min", price: "From $120" },
-        { name: "NAD+ IV Therapy", duration: "60 min", price: "From $300", popular: true },
-        { name: "Stress Management Therapy", duration: "60 min", price: "From $100" },
-        { name: "Guided Meditation", duration: "45 min", price: "From $60" },
-        { name: "Yoga Sessions", duration: "60 min", price: "From $40" },
+      icon: <Droplets className="h-8 w-8 text-rose-500" />,
+      title: "IV Drip Therapy",
+      description:
+        "Vitamin-rich IV infusions designed to boost energy, enhance immunity, and promote overall wellness.",
+      features: [
+        "Immunity Boost",
+        "Energy Enhancement",
+        "Hydration Therapy",
+        "Recovery Infusions",
       ],
     },
-  ]
+    {
+      icon: <Leaf className="h-8 w-8 text-rose-500" />,
+      title: "Wellness Therapies",
+      description:
+        "Holistic treatments focusing on mental and physical well-being through natural therapeutic approaches.",
+      features: [
+        "Massage Therapy",
+        "Aromatherapy",
+        "Meditation Sessions",
+        "Stress Management",
+      ],
+    },
+    {
+      icon: <Star className="h-8 w-8 text-rose-500" />,
+      title: "Signature Spa Packages",
+      description:
+        "Luxurious combination treatments designed for ultimate relaxation and rejuvenation.",
+      features: [
+        "Full Day Packages",
+        "Couples Retreats",
+        "Bridal Packages",
+        "Corporate Wellness",
+      ],
+    },
+  ];
 
   return (
-    <main className="min-h-screen">
-      <Header />
+    <div className="min-h-screen bg-gradient-to-br from-stone-50 to-rose-50 relative overflow-hidden">
+      {/* Decorative Elements */}
+      <div className="absolute top-10 left-10 w-8 h-8 bg-gradient-to-br from-rose-200 to-rose-300 rounded-full opacity-60 transform rotate-45"></div>
+      <div className="absolute top-32 right-20 w-6 h-6 bg-gradient-to-br from-pink-200 to-pink-300 rounded-full opacity-50 transform -rotate-12"></div>
+      <div className="absolute bottom-20 left-1/4 w-10 h-10 bg-gradient-to-br from-rose-300 to-rose-400 rounded-full opacity-40 transform rotate-12"></div>
 
-      {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-primary/10 to-secondary/10">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">Our Premium Services</h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-            Discover our comprehensive range of wellness and aesthetic treatments designed to help you look and feel
-            your absolute best
+      <div className="container mx-auto px-4 py-20 relative z-10">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h1 className="text-4xl md:text-5xl font-serif text-stone-800 mb-6">
+            Our Wellness Services
+          </h1>
+          <p className="text-lg text-stone-600 max-w-3xl mx-auto leading-relaxed">
+            Discover our comprehensive range of wellness and aesthetic
+            treatments designed to enhance your natural beauty and promote
+            holistic well-being.
           </p>
-          <Button size="lg" className="px-8">
-            Book Free Consultation
-          </Button>
         </div>
-      </section>
 
-      {/* Services Categories */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          {serviceCategories.map((category, categoryIndex) => (
-            <div key={categoryIndex} className="mb-20">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-12">
-                <div className={categoryIndex % 2 === 0 ? "order-1" : "order-2"}>
-                  <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">{category.title}</h2>
-                  <p className="text-lg text-muted-foreground mb-6">{category.description}</p>
-                  <Button variant="outline" size="lg">
-                    Learn More
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Button>
-                </div>
-                <div className={categoryIndex % 2 === 0 ? "order-2" : "order-1"}>
-                  <img
-                    src={category.image || "/placeholder.svg"}
-                    alt={category.title}
-                    className="w-full h-80 object-cover rounded-2xl shadow-lg"
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {category.treatments.map((treatment, treatmentIndex) => (
-                  <Card key={treatmentIndex} className="hover:shadow-lg transition-shadow">
-                    <CardHeader className="pb-3">
-                      <div className="flex items-center justify-between">
-                        <CardTitle className="text-lg">{treatment.name}</CardTitle>
-                        {treatment.popular && (
-                          <Badge className="bg-primary text-primary-foreground">
-                            <Star className="w-3 h-3 mr-1" />
-                            Popular
-                          </Badge>
-                        )}
-                      </div>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
-                        <div className="flex items-center">
-                          <Clock className="w-4 h-4 mr-1" />
-                          {treatment.duration}
-                        </div>
-                        <div className="font-semibold text-foreground">{treatment.price}</div>
-                      </div>
-                      <Button variant="outline" size="sm" className="w-full bg-transparent">
-                        Book Now
-                      </Button>
-                    </CardContent>
-                  </Card>
+        {/* Services Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          {services.map((service, index) => (
+            <div
+              key={index}
+              className="bg-white/70 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-stone-200/50"
+            >
+              <div className="mb-6">{service.icon}</div>
+              <h3 className="text-xl font-serif font-semibold text-stone-800 mb-4">
+                {service.title}
+              </h3>
+              <p className="text-stone-600 mb-6 leading-relaxed">
+                {service.description}
+              </p>
+              <ul className="space-y-2">
+                {service.features.map((feature, featureIndex) => (
+                  <li
+                    key={featureIndex}
+                    className="flex items-center gap-2 text-stone-600"
+                  >
+                    <div className="w-1.5 h-1.5 bg-rose-400 rounded-full"></div>
+                    {feature}
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           ))}
         </div>
-      </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-primary text-primary-foreground">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Begin Your Transformation?</h2>
-          <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            Book your complimentary consultation and let our experts create a personalized treatment plan for you
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary">
-              Book Free Consultation
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-white text-white hover:bg-white hover:text-primary bg-transparent"
-            >
-              Call (555) 123-4567
-            </Button>
+        {/* CTA Section */}
+        <div className="text-center">
+          <div className="bg-gradient-to-r from-rose-100 to-pink-100 rounded-2xl p-8 md:p-12">
+            <h2 className="text-2xl md:text-3xl font-serif text-stone-800 mb-4">
+              Ready to Begin Your Wellness Journey?
+            </h2>
+            <p className="text-stone-600 mb-6 max-w-2xl mx-auto">
+              Book a consultation today and let our expert team create a
+              personalized treatment plan just for you.
+            </p>
+            <button className="bg-gradient-to-r from-rose-400 to-rose-500 text-white px-8 py-3 rounded-full font-semibold hover:from-rose-500 hover:to-rose-600 transition-all duration-300 shadow-lg hover:shadow-xl">
+              Schedule Consultation
+            </button>
           </div>
         </div>
-      </section>
-
-      <Footer />
-    </main>
-  )
+      </div>
+    </div>
+  );
 }

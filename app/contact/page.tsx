@@ -1,335 +1,289 @@
-import Header from "@/components/header"
-import Footer from "@/components/footer"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { MapPin, Phone, Mail, Clock, Calendar, MessageCircle } from "lucide-react"
+import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
 
-export default function ContactPage() {
+export default function ContactUs() {
   const contactInfo = [
     {
-      icon: <Phone className="h-6 w-6 text-primary" />,
+      icon: <Phone className="h-6 w-6 text-rose-500" />,
       title: "Phone",
       details: ["+1 (555) 123-4567", "Emergency: +1 (555) 123-4568"],
-      action: "Call Now",
+      description: "Call us during business hours or leave a message anytime",
     },
     {
-      icon: <Mail className="h-6 w-6 text-primary" />,
+      icon: <Mail className="h-6 w-6 text-rose-500" />,
       title: "Email",
-      details: ["info@serenitywellness.com", "appointments@serenitywellness.com"],
-      action: "Send Email",
+      details: [
+        "info@serenitywellness.com",
+        "appointments@serenitywellness.com",
+      ],
+      description: "Send us an email and we'll respond within 24 hours",
     },
     {
-      icon: <MapPin className="h-6 w-6 text-primary" />,
+      icon: <MapPin className="h-6 w-6 text-rose-500" />,
       title: "Location",
       details: ["123 Wellness Avenue", "City, State 12345"],
-      action: "Get Directions",
+      description: "Visit our state-of-the-art wellness center",
     },
     {
-      icon: <Clock className="h-6 w-6 text-primary" />,
+      icon: <Clock className="h-6 w-6 text-rose-500" />,
       title: "Hours",
-      details: ["Mon-Fri: 9:00 AM - 7:00 PM", "Sat: 9:00 AM - 5:00 PM", "Sun: Closed"],
-      action: "View Schedule",
+      details: ["Mon-Sat: 9:00 AM - 7:00 PM", "Sunday: 10:00 AM - 5:00 PM"],
+      description: "Extended hours available for appointments",
     },
-  ]
+  ];
 
   const services = [
-    "Aesthetic & Cosmetic Treatments",
-    "Weight Loss & Body Contouring",
+    "Aesthetic Treatments",
+    "Weight Loss Programs",
     "Hair Restoration",
+    "IV Drip Therapy",
     "Wellness Therapies",
-    "General Consultation",
-  ]
+    "Spa Packages",
+  ];
 
   return (
-    <main className="min-h-screen">
-      <Header />
+    <div className="min-h-screen bg-gradient-to-br from-stone-50 to-rose-50 relative overflow-hidden">
+      {/* Decorative Elements */}
+      <div className="absolute top-10 left-10 w-8 h-8 bg-gradient-to-br from-rose-200 to-rose-300 rounded-full opacity-60 transform rotate-45"></div>
+      <div className="absolute top-32 right-20 w-6 h-6 bg-gradient-to-br from-pink-200 to-pink-300 rounded-full opacity-50 transform -rotate-12"></div>
+      <div className="absolute bottom-20 left-1/4 w-10 h-10 bg-gradient-to-br from-rose-300 to-rose-400 rounded-full opacity-40 transform rotate-12"></div>
 
-      {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-primary/10 to-secondary/10">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">Contact Us</h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-            Ready to begin your wellness journey? Get in touch with our expert team to schedule your consultation or ask
-            any questions
+      <div className="container mx-auto px-4 py-20 relative z-10">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h1 className="text-4xl md:text-5xl font-serif text-stone-800 mb-6">
+            Contact Us
+          </h1>
+          <p className="text-lg text-stone-600 max-w-3xl mx-auto leading-relaxed">
+            Ready to begin your wellness journey? Get in touch with our expert
+            team to schedule a consultation or learn more about our services.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="px-8">
-              <Calendar className="mr-2 h-5 w-5" />
-              Book Consultation
-            </Button>
-            <Button size="lg" variant="outline">
-              <Phone className="mr-2 h-5 w-5" />
-              Call (555) 123-4567
-            </Button>
-          </div>
         </div>
-      </section>
 
-      {/* Contact Information */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Get In Touch</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              We're here to help you every step of the way. Reach out through any of these convenient methods
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-            {contactInfo.map((info, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    {info.icon}
-                  </div>
-                  <CardTitle className="text-xl">{info.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-2 mb-4">
-                    {info.details.map((detail, idx) => (
-                      <p key={idx} className="text-muted-foreground">
-                        {detail}
+        <div className="grid lg:grid-cols-3 gap-12">
+          {/* Contact Information */}
+          <div className="lg:col-span-1">
+            <h2 className="text-2xl font-serif text-stone-800 mb-8">
+              Get In Touch
+            </h2>
+            <div className="space-y-6">
+              {contactInfo.map((info, index) => (
+                <div
+                  key={index}
+                  className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-stone-200/50"
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="flex-shrink-0 p-2 bg-rose-100 rounded-lg">
+                      {info.icon}
+                    </div>
+                    <div>
+                      <h3 className="font-serif font-semibold text-stone-800 mb-2">
+                        {info.title}
+                      </h3>
+                      {info.details.map((detail, detailIndex) => (
+                        <p
+                          key={detailIndex}
+                          className="text-stone-600 font-medium"
+                        >
+                          {detail}
+                        </p>
+                      ))}
+                      <p className="text-stone-500 text-sm mt-2">
+                        {info.description}
                       </p>
-                    ))}
+                    </div>
                   </div>
-                  <Button variant="outline" size="sm" className="w-full bg-transparent">
-                    {info.action}
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Form & Map */}
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Contact Form */}
-            <div>
-              <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-6">Send Us a Message</h3>
-              <p className="text-muted-foreground mb-8">
-                Fill out the form below and we'll get back to you within 24 hours to discuss your wellness goals and
-                schedule your consultation.
-              </p>
-
-              <Card>
-                <CardContent className="p-6">
-                  <form className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div>
-                        <Label htmlFor="firstName">First Name *</Label>
-                        <Input id="firstName" placeholder="Enter your first name" />
-                      </div>
-                      <div>
-                        <Label htmlFor="lastName">Last Name *</Label>
-                        <Input id="lastName" placeholder="Enter your last name" />
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div>
-                        <Label htmlFor="email">Email *</Label>
-                        <Input id="email" type="email" placeholder="Enter your email" />
-                      </div>
-                      <div>
-                        <Label htmlFor="phone">Phone Number</Label>
-                        <Input id="phone" type="tel" placeholder="Enter your phone number" />
-                      </div>
-                    </div>
-
-                    <div>
-                      <Label htmlFor="service">Service of Interest</Label>
-                      <Select>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select a service" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {services.map((service, index) => (
-                            <SelectItem key={index} value={service.toLowerCase().replace(/\s+/g, "-")}>
-                              {service}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
-
-                    <div>
-                      <Label htmlFor="message">Message *</Label>
-                      <Textarea
-                        id="message"
-                        placeholder="Tell us about your wellness goals and any questions you have..."
-                        rows={5}
-                      />
-                    </div>
-
-                    <div className="flex items-center space-x-2">
-                      <input type="checkbox" id="consent" className="rounded" />
-                      <Label htmlFor="consent" className="text-sm text-muted-foreground">
-                        I consent to being contacted about my wellness consultation
-                      </Label>
-                    </div>
-
-                    <Button type="submit" size="lg" className="w-full">
-                      <MessageCircle className="mr-2 h-5 w-5" />
-                      Send Message
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
+                </div>
+              ))}
             </div>
 
-            {/* Map & Location Info */}
-            <div>
-              <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-6">Visit Our Center</h3>
-              <p className="text-muted-foreground mb-8">
-                Located in the heart of the city, our beautiful wellness center is easily accessible with ample parking
-                available.
-              </p>
-
-              {/* Map Placeholder */}
-              <div className="bg-muted rounded-lg h-64 mb-6 flex items-center justify-center">
-                <div className="text-center">
-                  <MapPin className="h-12 w-12 text-primary mx-auto mb-2" />
-                  <p className="text-muted-foreground">Interactive Map</p>
-                  <p className="text-sm text-muted-foreground">123 Wellness Avenue, City, State 12345</p>
+            {/* Map Placeholder */}
+            <div className="mt-8 bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-stone-200/50">
+              <h3 className="font-serif font-semibold text-stone-800 mb-4">
+                Find Us
+              </h3>
+              <div className="h-48 bg-gradient-to-br from-rose-200 to-rose-300 rounded-lg flex items-center justify-center">
+                <div className="text-center text-rose-600">
+                  <MapPin className="h-12 w-12 mx-auto mb-2" />
+                  <p className="text-sm">Interactive Map</p>
                 </div>
               </div>
+            </div>
+          </div>
 
-              <Card>
-                <CardContent className="p-6">
-                  <h4 className="font-semibold text-foreground mb-4">Location Details</h4>
-                  <div className="space-y-3">
-                    <div className="flex items-start gap-3">
-                      <MapPin className="h-5 w-5 text-primary mt-0.5" />
-                      <div>
-                        <p className="font-medium">Address</p>
-                        <p className="text-muted-foreground">
-                          123 Wellness Avenue
-                          <br />
-                          City, State 12345
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <Clock className="h-5 w-5 text-primary mt-0.5" />
-                      <div>
-                        <p className="font-medium">Parking</p>
-                        <p className="text-muted-foreground">
-                          Free parking available
-                          <br />
-                          Valet service on weekends
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <Phone className="h-5 w-5 text-primary mt-0.5" />
-                      <div>
-                        <p className="font-medium">Public Transport</p>
-                        <p className="text-muted-foreground">
-                          Metro Station: 2 blocks away
-                          <br />
-                          Bus Stop: Right outside
-                        </p>
-                      </div>
-                    </div>
+          {/* Contact Form */}
+          <div className="lg:col-span-2">
+            <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-stone-200/50">
+              <h2 className="text-2xl font-serif text-stone-800 mb-8">
+                Send Us a Message
+              </h2>
+
+              <form className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-stone-700 font-medium mb-2">
+                      First Name *
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      className="w-full px-4 py-3 border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-300 bg-white"
+                      placeholder="Enter your first name"
+                    />
                   </div>
+                  <div>
+                    <label className="block text-stone-700 font-medium mb-2">
+                      Last Name *
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      className="w-full px-4 py-3 border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-300 bg-white"
+                      placeholder="Enter your last name"
+                    />
+                  </div>
+                </div>
 
-                  <Button variant="outline" className="w-full mt-6 bg-transparent">
-                    Get Directions
-                  </Button>
-                </CardContent>
-              </Card>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-stone-700 font-medium mb-2">
+                      Email *
+                    </label>
+                    <input
+                      type="email"
+                      required
+                      className="w-full px-4 py-3 border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-300 bg-white"
+                      placeholder="Enter your email"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-stone-700 font-medium mb-2">
+                      Phone
+                    </label>
+                    <input
+                      type="tel"
+                      className="w-full px-4 py-3 border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-300 bg-white"
+                      placeholder="Enter your phone number"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-stone-700 font-medium mb-2">
+                    Service of Interest
+                  </label>
+                  <select className="w-full px-4 py-3 border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-300 bg-white">
+                    <option value="">Select a service</option>
+                    {services.map((service, index) => (
+                      <option key={index} value={service}>
+                        {service}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-stone-700 font-medium mb-2">
+                    Preferred Contact Method
+                  </label>
+                  <div className="flex gap-6">
+                    <label className="flex items-center">
+                      <input
+                        type="radio"
+                        name="contact-method"
+                        value="phone"
+                        className="mr-2 text-rose-500 focus:ring-rose-300"
+                      />
+                      Phone
+                    </label>
+                    <label className="flex items-center">
+                      <input
+                        type="radio"
+                        name="contact-method"
+                        value="email"
+                        className="mr-2 text-rose-500 focus:ring-rose-300"
+                      />
+                      Email
+                    </label>
+                    <label className="flex items-center">
+                      <input
+                        type="radio"
+                        name="contact-method"
+                        value="text"
+                        className="mr-2 text-rose-500 focus:ring-rose-300"
+                      />
+                      Text
+                    </label>
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-stone-700 font-medium mb-2">
+                    Message *
+                  </label>
+                  <textarea
+                    required
+                    rows={5}
+                    className="w-full px-4 py-3 border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-300 bg-white"
+                    placeholder="Tell us about your wellness goals or questions..."
+                  ></textarea>
+                </div>
+
+                <div className="flex items-center">
+                  <input
+                    type="checkbox"
+                    id="newsletter"
+                    className="mr-3 text-rose-500 focus:ring-rose-300"
+                  />
+                  <label
+                    htmlFor="newsletter"
+                    className="text-stone-600 text-sm"
+                  >
+                    I would like to receive wellness tips and special offers via
+                    email
+                  </label>
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full bg-gradient-to-r from-rose-400 to-rose-500 text-white px-8 py-4 rounded-lg font-semibold hover:from-rose-500 hover:to-rose-600 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                >
+                  Send Message
+                  <Send className="h-5 w-5" />
+                </button>
+              </form>
+            </div>
+
+            {/* Quick Actions */}
+            <div className="mt-8 grid md:grid-cols-2 gap-6">
+              <div className="bg-gradient-to-r from-rose-100 to-pink-100 rounded-2xl p-6 text-center">
+                <h3 className="font-serif font-semibold text-stone-800 mb-3">
+                  Schedule a Consultation
+                </h3>
+                <p className="text-stone-600 text-sm mb-4">
+                  Ready to get started? Book your personalized consultation
+                  today.
+                </p>
+                <button className="bg-white text-rose-600 px-6 py-2 rounded-full font-semibold hover:bg-rose-50 transition-colors">
+                  Book Now
+                </button>
+              </div>
+
+              <div className="bg-gradient-to-r from-stone-100 to-stone-200 rounded-2xl p-6 text-center">
+                <h3 className="font-serif font-semibold text-stone-800 mb-3">
+                  Virtual Consultation
+                </h3>
+                <p className="text-stone-600 text-sm mb-4">
+                  Can't visit in person? Schedule a virtual consultation from
+                  home.
+                </p>
+                <button className="bg-white text-stone-600 px-6 py-2 rounded-full font-semibold hover:bg-stone-50 transition-colors">
+                  Learn More
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Frequently Asked Questions</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Quick answers to common questions about our services and booking process
-            </p>
-          </div>
-
-          <div className="max-w-3xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Card>
-                <CardContent className="p-6">
-                  <h4 className="font-semibold text-foreground mb-3">How do I book an appointment?</h4>
-                  <p className="text-muted-foreground text-sm">
-                    You can book online, call us, or visit our center. We recommend booking 1-2 weeks in advance for
-                    popular treatments.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardContent className="p-6">
-                  <h4 className="font-semibold text-foreground mb-3">Is consultation really free?</h4>
-                  <p className="text-muted-foreground text-sm">
-                    Yes! Your initial consultation is completely free with no obligation. We'll assess your needs and
-                    create a personalized plan.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardContent className="p-6">
-                  <h4 className="font-semibold text-foreground mb-3">What should I expect on my first visit?</h4>
-                  <p className="text-muted-foreground text-sm">
-                    A comprehensive consultation, facility tour, and personalized treatment recommendations based on
-                    your goals.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardContent className="p-6">
-                  <h4 className="font-semibold text-foreground mb-3">Do you offer payment plans?</h4>
-                  <p className="text-muted-foreground text-sm">
-                    Yes, we offer flexible payment options and financing plans to make your wellness journey affordable.
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Emergency Contact */}
-      <section className="py-20 bg-primary text-primary-foreground">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Need Immediate Assistance?</h2>
-          <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            For urgent matters or after-hours support, our emergency line is available 24/7
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary">
-              <Phone className="mr-2 h-5 w-5" />
-              Emergency: (555) 123-4568
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-white text-white hover:bg-white hover:text-primary bg-transparent"
-            >
-              <MessageCircle className="mr-2 h-5 w-5" />
-              Live Chat Support
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      <Footer />
-    </main>
-  )
+      </div>
+    </div>
+  );
 }
