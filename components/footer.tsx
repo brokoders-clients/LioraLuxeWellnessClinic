@@ -16,7 +16,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <h3 className="text-2xl font-serif font-bold mb-4 text-stone-800">
-              Serenity Wellness
+              Liora Luxe
             </h3>
             <p className="text-stone-600 mb-4 leading-relaxed">
               Your trusted partner in aesthetic treatments, wellness therapies,
@@ -131,7 +131,7 @@ export default function Footer() {
 
         <div className="border-t border-stone-300 mt-8 pt-8 text-center text-stone-600">
           <p className="flex items-center justify-center gap-2">
-            © 2024 Serenity Wellness Center. Made with{" "}
+            © 2024 Liora Luxe Center. Made with{" "}
             <Heart className="h-4 w-4 text-rose-500" /> for your wellness
             journey.
           </p>

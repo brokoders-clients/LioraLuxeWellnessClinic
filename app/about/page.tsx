@@ -59,7 +59,7 @@ export default function AboutUs() {
         {/* Header */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-serif text-stone-800 mb-6">
-            About Serenity Wellness
+            About Liora Luxe
           </h1>
           <p className="text-lg text-stone-600 max-w-3xl mx-auto leading-relaxed">
             Founded on the belief that true beauty comes from within, we've been
@@ -76,11 +76,11 @@ export default function AboutUs() {
             </h2>
             <div className="space-y-4 text-stone-600 leading-relaxed">
               <p>
-                Serenity Wellness Center was born from a vision to create a
-                sanctuary where health, beauty, and well-being converge. Our
-                journey began with a simple mission: to provide personalized,
-                cutting-edge treatments in an environment that promotes healing
-                and transformation.
+                Liora Luxe Center was born from a vision to create a sanctuary
+                where health, beauty, and well-being converge. Our journey began
+                with a simple mission: to provide personalized, cutting-edge
+                treatments in an environment that promotes healing and
+                transformation.
               </p>
               <p>
                 What started as a small practice has grown into a comprehensive

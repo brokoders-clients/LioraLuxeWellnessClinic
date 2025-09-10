@@ -23,7 +23,7 @@ export default function WelcomeSection() {
             <h2 className="text-4xl md:text-5xl font-serif text-gray-800 leading-tight">
               Welcome
               <br />
-              to Amoy Spa
+              to Liora Luxe Spa
             </h2>
             <p className="text-gray-600 leading-relaxed text-lg">
               Everybody is looking for places where to relax and get more

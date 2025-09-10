@@ -76,31 +76,31 @@ const PremiumWellnessServices = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.3,
-        duration: 0.8,
+        staggerChildren: 0.2,
+        duration: 0.6,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { y: 60, opacity: 0 },
+    hidden: { y: 40, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
-        duration: 0.8,
+        duration: 0.6,
         ease: [0.25, 0.46, 0.45, 0.94],
       },
     },
   };
 
   const imageVariants = (isLeft) => ({
-    hidden: { x: isLeft ? -100 : 100, opacity: 0 },
+    hidden: { x: isLeft ? -60 : 60, opacity: 0 },
     visible: {
       x: 0,
       opacity: 1,
       transition: {
-        duration: 1,
+        duration: 0.8,
         ease: [0.25, 0.46, 0.45, 0.94],
       },
     },
@@ -108,60 +108,58 @@ const PremiumWellnessServices = () => {
 
   return (
     <>
-      <Header/>
-      <div className="min-h-screen bg-gradient-to-b from-[#fcfaf9] via-[#f7f2f2] to-[#f3e7e2]">
+      <div className="min-h-screen bg-gradient-to-br from-stone-50 via-rose-50/30 to-pink-50/40">
         {/* Hero Section */}
         <motion.section
           className="relative py-24 px-6 text-center overflow-hidden"
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          {/* Background Gradient Shapes */}
+          {/* Subtle Background Elements */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <motion.div
-              className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-[#f3e7e2]/30 to-transparent rounded-full blur-3xl"
+              className="absolute top-20 left-10 w-32 h-32 bg-pink-200/10 rounded-full blur-3xl"
               animate={{
-                scale: [1, 1.1, 1],
-                rotate: [0, 180, 360],
+                scale: [1, 1.05, 1],
+                opacity: [0.1, 0.15, 0.1],
               }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
             />
             <motion.div
-              className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-[#4c4343]/10 to-transparent rounded-full blur-3xl"
+              className="absolute bottom-20 right-10 w-24 h-24 bg-rose-200/15 rounded-full blur-2xl"
               animate={{
-                scale: [1.1, 1, 1.1],
-                rotate: [360, 180, 0],
+                scale: [1.05, 1, 1.05],
+                opacity: [0.15, 0.1, 0.15],
               }}
-              transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+              transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
             />
           </div>
 
           <div className="relative z-10 max-w-4xl mx-auto">
             <motion.h1
-              className="text-6xl md:text-7xl font-bold text-[#4c4343] mb-6 leading-tight"
-              style={{ fontFamily: "Georgia, serif" }}
-              initial={{ opacity: 0, y: 30 }}
+              className="text-6xl lg:text-7xl font-serif text-gray-900 mb-6 leading-tight font-light tracking-tight"
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.8 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
             >
               Our Services
             </motion.h1>
 
             <motion.p
-              className="text-xl md:text-2xl text-[#4c4343]/80 font-light tracking-wide"
-              initial={{ opacity: 0, y: 30 }}
+              className="text-xl lg:text-2xl text-gray-600 font-light tracking-wide"
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
             >
               Premium care for your skin, body & wellness
             </motion.p>
 
             <motion.div
-              className="mt-8 w-24 h-1 bg-gradient-to-r from-[#4c4343] to-[#4c4343]/50 mx-auto rounded-full"
+              className="mt-12 w-24 h-px bg-gray-300 mx-auto"
               initial={{ width: 0 }}
               animate={{ width: 96 }}
-              transition={{ delay: 0.8, duration: 0.8 }}
+              transition={{ delay: 0.6, duration: 0.8 }}
             />
           </div>
         </motion.section>
@@ -191,23 +189,20 @@ const PremiumWellnessServices = () => {
                 >
                   {/* Image */}
                   <motion.div
-                    className={`relative group ${
+                    className={`relative ${
                       isLeft ? "lg:order-1" : "lg:order-2"
                     }`}
                     variants={imageVariants(isLeft)}
                   >
-                    <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+                    <div className="relative overflow-hidden rounded-2xl">
                       <motion.img
                         src={service.image}
                         alt={service.imageAlt}
-                        className="w-full h-80 md:h-96 object-cover transition-transform duration-700"
-                        whileHover={{ scale: 1.05 }}
+                        className="w-full h-80 lg:h-96 object-cover transition-transform duration-500"
+                        whileHover={{ scale: 1.02 }}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#4c4343]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-gray-900/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
                     </div>
-
-                    {/* Decorative Elements */}
-                    <div className="absolute -z-10 top-6 left-6 w-full h-full bg-[#f3e7e2] rounded-2xl" />
                   </motion.div>
 
                   {/* Content */}
@@ -217,46 +212,39 @@ const PremiumWellnessServices = () => {
                     }`}
                     variants={itemVariants}
                   >
-                    <motion.div
-                      className="bg-[#f7f2f2] p-10 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border border-[#f3e7e2]/50"
-                      whileHover={{ scale: 1.02 }}
-                    >
+                    <div className="bg-white/60 backdrop-blur-sm p-10 rounded-2xl border border-white/20">
                       <h3
-                        className="text-3xl md:text-4xl font-bold text-[#4c4343] mb-6 leading-tight"
-                        style={{ fontFamily: "Georgia, serif" }}
+                        className="text-3xl lg:text-4xl font-serif text-gray-900 mb-6 leading-tight font-light"
                       >
                         {service.title}
                       </h3>
 
-                      <p className="text-lg text-[#4c4343]/80 mb-8 leading-relaxed font-light">
+                      <p className="text-lg text-gray-600 mb-8 leading-relaxed font-light">
                         {service.description}
                       </p>
 
                       <div className="space-y-4">
                         {service.treatments.map((treatment, treatmentIndex) => (
-                          <motion.div
+                          <div
                             key={treatmentIndex}
                             className="flex items-start gap-3"
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            transition={{ delay: treatmentIndex * 0.1 }}
                           >
-                            <div className="w-2 h-2 rounded-full bg-[#4c4343] mt-3 flex-shrink-0" />
-                            <p className="text-[#4c4343]/70 leading-relaxed">
+                            <div className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2.5 flex-shrink-0" />
+                            <p className="text-gray-600 leading-relaxed font-light">
                               {treatment}
                             </p>
-                          </motion.div>
+                          </div>
                         ))}
                       </div>
 
                       <motion.button
-                        className="mt-8 px-8 py-3 bg-[#4c4343] text-white rounded-full font-medium hover:bg-[#4c4343]/90 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
+                        className="mt-10 px-8 py-3 bg-gray-900 text-white rounded-full font-light tracking-wide hover:bg-gray-800 transition-colors duration-300"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
                       >
                         Learn More
                       </motion.button>
-                    </motion.div>
+                    </div>
                   </motion.div>
                 </motion.div>
               );
@@ -266,40 +254,39 @@ const PremiumWellnessServices = () => {
 
         {/* Bottom CTA Section */}
         <motion.section
-          className="py-20 px-6 bg-gradient-to-r from-[#f3e7e2] to-[#f7f2f2]"
+          className="py-24 px-6 bg-gradient-to-r from-stone-100/50 to-rose-50/50"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 1 }}
+          transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
           <div className="max-w-4xl mx-auto text-center">
             <motion.h2
-              className="text-4xl md:text-5xl font-bold text-[#4c4343] mb-6"
-              style={{ fontFamily: "Georgia, serif" }}
-              initial={{ y: 30, opacity: 0 }}
+              className="text-4xl lg:text-5xl font-serif text-gray-900 mb-6 font-light"
+              initial={{ y: 20, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.6 }}
             >
               Ready to Begin Your Wellness Journey?
             </motion.h2>
 
             <motion.p
-              className="text-xl text-[#4c4343]/80 mb-10 font-light"
-              initial={{ y: 30, opacity: 0 }}
+              className="text-xl text-gray-600 mb-12 font-light"
+              initial={{ y: 20, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
+              transition={{ delay: 0.1, duration: 0.6 }}
             >
               Schedule your consultation today and discover the perfect
               treatment plan tailored just for you.
             </motion.p>
 
             <motion.button
-              className="px-12 py-4 bg-[#4c4343] text-white rounded-full text-lg font-medium hover:bg-[#4c4343]/90 transition-all duration-300 hover:shadow-xl hover:-translate-y-2"
-              initial={{ y: 30, opacity: 0 }}
+              className="px-12 py-4 bg-gray-900 text-white rounded-full text-lg font-light tracking-wide hover:bg-gray-800 transition-colors duration-300"
+              initial={{ y: 20, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
               Book Consultation
             </motion.button>

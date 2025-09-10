@@ -9,7 +9,7 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 
 export const metadata: Metadata = {
-  title: "Serenity Wellness Center - Premium Aesthetic & Wellness Treatments",
+  title: "Liora Luxe Center - Premium Aesthetic & Wellness Treatments",
   description:
     "Transform your wellness journey with our comprehensive aesthetic treatments, weight loss programs, hair restoration, and wellness therapies. Book your consultation today.",
   generator: "v0.app",

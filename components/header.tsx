@@ -19,7 +19,7 @@ export default function Header() {
               href="/"
               className="text-2xl font-serif text-gray-800 hover:text-gray-600 transition-colors"
             >
-              Amoy
+              Liora Luxe
             </Link>
           </div>
 

@@ -65,7 +65,7 @@ export default function TestimonialsSection() {
           </h2>
           <p className="text-xl text-stone-600 max-w-2xl mx-auto">
             Real experiences from guests who have found peace and rejuvenation
-            at Amoy Spa.
+            at Liora Luxe Spa.
           </p>
         </div>
 

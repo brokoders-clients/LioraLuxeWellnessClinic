@@ -1,6 +1,6 @@
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Award, Users, Clock, Shield } from "lucide-react"
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Award, Users, Clock, Shield } from "lucide-react";
 
 const stats = [
   {
@@ -23,7 +23,7 @@ const stats = [
     number: "100%",
     label: "Safe & Certified",
   },
-]
+];
 
 export default function AboutSection() {
   return (
@@ -35,13 +35,16 @@ export default function AboutSection() {
               Your Trusted Partner in Wellness Excellence
             </h2>
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-              At Serenity Wellness Center, we combine cutting-edge technology with personalized care to deliver
-              exceptional results. Our team of certified professionals is dedicated to helping you achieve your
+              At Liora Luxe Center, we combine cutting-edge technology with
+              personalized care to deliver exceptional results. Our team of
+              certified professionals is dedicated to helping you achieve your
               aesthetic and wellness goals in a safe, comfortable environment.
             </p>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              From advanced laser treatments to holistic wellness therapies, we offer comprehensive solutions tailored
-              to your unique needs. Experience the difference that expertise, innovation, and genuine care can make.
+              From advanced laser treatments to holistic wellness therapies, we
+              offer comprehensive solutions tailored to your unique needs.
+              Experience the difference that expertise, innovation, and genuine
+              care can make.
             </p>
             <Button size="lg">Meet Our Team</Button>
           </div>
@@ -58,7 +61,7 @@ export default function AboutSection() {
         {/* Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
           {stats.map((stat, index) => {
-            const IconComponent = stat.icon
+            const IconComponent = stat.icon;
             return (
               <Card key={index} className="text-center border-border">
                 <CardContent className="pt-6">
@@ -67,14 +70,16 @@ export default function AboutSection() {
                       <IconComponent className="h-8 w-8 text-accent" />
                     </div>
                   </div>
-                  <div className="text-3xl font-bold text-primary mb-2">{stat.number}</div>
+                  <div className="text-3xl font-bold text-primary mb-2">
+                    {stat.number}
+                  </div>
                   <div className="text-muted-foreground">{stat.label}</div>
                 </CardContent>
               </Card>
-            )
+            );
           })}
         </div>
       </div>
     </section>
-  )
+  );
 }
