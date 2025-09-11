@@ -3,23 +3,23 @@ import { ArrowRight } from "lucide-react";
 
 const services = [
   {
-    title: "Hydro Therapy",
-    image: "/hydro-therapy.jpg",
-    alt: "Woman with face mask relaxing",
+    title: "Aesthetic & Cosmetic Treatments",
+    image: "/images/services/cosmatic2.png",
+    alt: "Aesthetic & Cosmetic Treatments",
   },
   {
-    title: "Sauna Rooms",
-    image: "/sauna-rooms.jpg",
-    alt: "Spa stones and candles",
+    title: " Weight Loss & Body Contouring",
+    image: "/images/services/weight_loss.png",
+    alt: "Weight Loss & Body Contouring",
   },
   {
-    title: "Massages",
-    image: "/massages.jpg",
+    title: "Hair Restoration",
+    image: "/images/services/hair_loss.png",
     alt: "Relaxing massage therapy",
   },
   {
-    title: "Reflexology",
-    image: "/reflexology.jpg",
+    title: "Wellness Therapie",
+    image: "/images/services/therapie.png",
     alt: "Foot massage and reflexology",
   },
 ];
@@ -48,7 +48,7 @@ export default function ServicesSection() {
                   src={service.image || "/placeholder.svg"}
                   alt={service.alt}
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="object-cover group-hover:scale-105 scale-105 transition-transform duration-300"
                 />
               </div>
 

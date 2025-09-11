@@ -1,19 +1,25 @@
+"use client";
 import { Button } from "@/components/ui/button";
-import { Play } from "lucide-react";
+import { Play, Pause } from "lucide-react";
+import { useState, useRef } from "react";
 
 export default function VideoSection() {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const toggleVideo = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
   return (
     <section className="py-20 bg-stone-50 relative overflow-hidden">
-      <div className="absolute top-10 left-10 w-8 h-8 opacity-30">
-        <div className="w-full h-full bg-gradient-to-br from-pink-300 to-rose-200 rounded-full transform rotate-12"></div>
-      </div>
-      <div className="absolute top-32 right-20 w-6 h-6 opacity-25">
-        <div className="w-full h-full bg-gradient-to-br from-pink-200 to-rose-100 rounded-full transform -rotate-45"></div>
-      </div>
-      <div className="absolute bottom-20 left-1/4 w-5 h-5 opacity-20">
-        <div className="w-full h-full bg-gradient-to-br from-pink-300 to-rose-200 rounded-full transform rotate-90"></div>
-      </div>
-
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
@@ -27,19 +33,43 @@ export default function VideoSection() {
           </div>
 
           <div className="relative rounded-2xl overflow-hidden shadow-xl">
-            <img
-              src="/luxury-wellness-center-interior-with-modern-treatm.jpg"
-              alt="Spa Interior"
+            <video
+              ref={videoRef}
               className="w-full h-[500px] object-cover"
-            />
-            <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-              <Button
-                size="lg"
-                className="rounded-full w-20 h-20 p-0 bg-white/90 hover:bg-white text-stone-700 hover:text-stone-800 shadow-lg"
-              >
-                <Play className="h-8 w-8 ml-1" />
-              </Button>
-            </div>
+              // poster="/luxury-wellness-center-interior-with-modern-treatm.jpg"
+              onPlay={() => setIsPlaying(true)}
+              onPause={() => setIsPlaying(false)}
+              onEnded={() => setIsPlaying(false)}
+            >
+              <source src="/images/showcase_video.mp4" type="video/mp4" />
+              <source src="/spa-tour-video.webm" type="video/webm" />
+              Your browser does not support the video tag.
+            </video>
+
+            {!isPlaying && (
+              <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+                <Button
+                  size="lg"
+                  onClick={toggleVideo}
+                  className="rounded-full w-20 h-20 p-0 bg-white/90 hover:bg-white text-stone-700 hover:text-stone-800 shadow-lg transition-all duration-300 hover:scale-105"
+                >
+                  <Play className="h-8 w-8 ml-1" />
+                </Button>
+              </div>
+            )}
+
+            {isPlaying && (
+              <div className="absolute top-6 right-6">
+                <Button
+                  size="sm"
+                  onClick={toggleVideo}
+                  className="rounded-full w-12 h-12 p-0 bg-black/50 hover:bg-black/70 text-white border-0"
+                >
+                  <Pause className="h-5 w-5" />
+                </Button>
+              </div>
+            )}
+
             <div className="absolute bottom-6 left-6 text-white">
               <h3 className="text-2xl font-serif mb-2">Spa Tour</h3>
               <p className="text-lg opacity-90">Explore our peaceful retreat</p>
