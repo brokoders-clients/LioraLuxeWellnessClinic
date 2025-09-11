@@ -3,36 +3,44 @@
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react";
+import { ChevronLeft, ChevronRight, Star, Quote, User } from "lucide-react";
+import Image from "next/image";
 
 const testimonials = [
   {
-    name: "Sarah Johnson",
-    treatment: "Hydro Therapy & Massage",
+    name: "Priya Mehta",
+    treatment: "Aesthetic & Cosmetic Treatments",
     rating: 5,
-    text: "The hydro therapy session was absolutely divine! The staff made me feel so relaxed and pampered. My skin feels rejuvenated and I left feeling completely refreshed.",
-    image: "/professional-woman-smiling-spa-client.jpg",
+    text: "I came here for a skin rejuvenation treatment and the results have been amazing. The staff explained everything clearly, and I can already see a healthy glow on my face. Highly recommended!",
+    image: "/clients/priya-mehta.jpg",
   },
   {
-    name: "Michael Chen",
-    treatment: "Sauna & Reflexology",
+    name: "Mohit Sharma",
+    treatment: "Weight Loss & Body Contouring",
     rating: 5,
-    text: "The sauna experience combined with reflexology was exactly what I needed. The peaceful atmosphere and expert care helped me unwind completely after a stressful week.",
-    image: "/professional-man-relaxed-spa-client.jpg",
+    text: "The weight loss program was very structured and easy to follow. The team guided me with personalized plans, and I’ve noticed real changes in both my energy levels and body shape.",
+    image: "/clients/rohit-sharma.jpg",
   },
   {
-    name: "Emily Rodriguez",
-    treatment: "Full Body Massage & Facial",
+    name: "Ananya Iyer",
+    treatment: "Hair Restoration",
     rating: 5,
-    text: "The full body massage and facial treatment exceeded all my expectations. The attention to detail and the serene environment made this the perfect spa day.",
-    image: "/professional-woman-glowing-spa-client.jpg",
+    text: "I was worried about hair thinning, but after a few sessions here, I can already see new growth and stronger hair. The experts are very professional and supportive throughout the process.",
+    image: "/clients/ananya-iyer.jpg",
   },
   {
-    name: "David Thompson",
-    treatment: "Couples Spa Package",
+    name: "Arjun Patel",
+    treatment: "Wellness Therapie",
     rating: 5,
-    text: "My partner and I had the most wonderful couples spa experience. The treatments were luxurious and the ambiance was perfect for a romantic wellness retreat.",
-    image: "/professional-man-happy-spa-client.jpg",
+    text: "The wellness therapy sessions helped me reduce my stress significantly. The environment is calm, and the therapy techniques are truly relaxing. I feel lighter and more energetic after every session.",
+    image: "/clients/arjun-patel.jpg",
+  },
+  {
+    name: "Neha Kapoor",
+    treatment: "Aesthetic & Cosmetic Treatments",
+    rating: 5,
+    text: "I opted for a cosmetic treatment for my skin concerns, and I couldn’t be happier with the outcome. The center uses advanced techniques, and I feel more confident than ever.",
+    image: "/clients/neha-kapoor.jpg",
   },
 ];
 
@@ -101,7 +109,7 @@ export default function TestimonialsSection() {
         </div>
 
         <div className="max-w-3xl mx-auto">
-          <Card className="border-0 bg-white shadow-xl rounded-3xl overflow-hidden">
+          <Card className="border-1 border-gray-400 bg-white rounded-3xl overflow-hidden">
             <CardContent className="p-10 md:p-12">
               <div className="flex justify-center mb-8">
                 <div className="w-16 h-16 bg-gradient-to-br from-rose-100 to-pink-100 rounded-full flex items-center justify-center">
@@ -125,13 +133,15 @@ export default function TestimonialsSection() {
 
                 <div className="flex items-center justify-center gap-6">
                   <div className="relative">
-                    <img
+                    {/* <Image
                       src={
                         testimonials[currentIndex].image || "/placeholder.svg"
                       }
+                      width={100}
+                      height={100}
                       alt={testimonials[currentIndex].name}
-                      className="w-20 h-20 rounded-full object-cover shadow-lg"
-                    />
+                      className="w-20 h-20 rounded-full object-cover"
+                    /> */}
                     <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-rose-400 rounded-full flex items-center justify-center">
                       <Star className="h-4 w-4 fill-white text-white" />
                     </div>
