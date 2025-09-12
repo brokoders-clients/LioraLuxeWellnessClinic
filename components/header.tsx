@@ -59,12 +59,7 @@ export default function Header() {
 
           {/* Right side icons */}
           <div className="flex items-center gap-4">
-            <button className="text-gray-600 hover:text-gray-800 transition-colors hidden md:block">
-              <Search className="w-5 h-5" />
-            </button>
-            <button className="text-gray-600 hover:text-gray-800 transition-colors hidden md:block">
-              <ShoppingBag className="w-5 h-5" />
-            </button>
+            
 
             {/* Mobile menu button */}
             <button
@@ -113,17 +108,7 @@ export default function Header() {
                 Social
               </Link>
 
-              {/* Mobile icons */}
-              <div className="flex items-center gap-4 pt-4 border-t border-gray-200">
-                <button className="text-gray-600 hover:text-gray-800 transition-colors flex items-center gap-2">
-                  <Search className="w-5 h-5" />
-                  <span className="text-sm">Search</span>
-                </button>
-                <button className="text-gray-600 hover:text-gray-800 transition-colors flex items-center gap-2">
-                  <ShoppingBag className="w-5 h-5" />
-                  <span className="text-sm">Cart</span>
-                </button>
-              </div>
+          
             </div>
           </nav>
         )}
