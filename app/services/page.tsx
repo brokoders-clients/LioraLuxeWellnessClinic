@@ -263,7 +263,7 @@ const PremiumWellnessServices = () => {
 
       {/* Hero Section */}
       <motion.section
-        className="relative py-28 px-6 text-center overflow-hidden"
+        className="relative py-20 px-6 text-center overflow-hidden"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
@@ -299,18 +299,6 @@ const PremiumWellnessServices = () => {
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto">
-          {/* <motion.div
-            className="mb-8"
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 0.1, duration: 0.6 }}
-          >
-            <div className="inline-flex items-center px-6 py-2 bg-white/70 backdrop-blur-sm rounded-full border border-pink-200/30 shadow-sm">
-              <div className="w-2 h-2 bg-pink-400 rounded-full mr-3 animate-pulse" />
-              <span className="text-sm font-medium text-gray-700 tracking-wide">Premium Wellness Experience</span>
-            </div>
-          </motion.div> */}
-
           <motion.h1
             className="text-6xl lg:text-7xl font-serif text-gray-900 mb-8 leading-tight font-light tracking-tight"
             initial={{ opacity: 0, y: 20 }}
@@ -351,6 +339,7 @@ const PremiumWellnessServices = () => {
       {/* Services Section */}
       <motion.section
         className="pb-20 px-6 relative"
+        className="py-12 px-6 relative"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -363,7 +352,7 @@ const PremiumWellnessServices = () => {
             return (
               <motion.div
                 key={service.id}
-                className={`grid lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-32 last:mb-0 ${
+                className={`grid lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-16 last:mb-0 ${
                   isLeft ? "" : "lg:direction-rtl"
                 }`}
                 variants={itemVariants}
@@ -378,17 +367,16 @@ const PremiumWellnessServices = () => {
                   transition={{ duration: 0.3 }}
                 >
                   <div className="relative overflow-hidden rounded-3xl">
-                    <motion.img
+                    <img
                       src={service.image}
                       alt={service.imageAlt}
-                      className="w-full h-80 lg:h-96 object-cover transition-all duration-700"
-                      whileHover={{ scale: 1.05 }}
+                      className="w-full h-80 lg:h-96 object-cover"
                     />
                   </div>
 
                   {/* Decorative shadow */}
                   <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-3/4 h-6 bg-gradient-to-r from-transparent via-gray-200/20 to-transparent rounded-full blur-xl" />
-                </motion.div>
+                </div>
 
                 {/* Enhanced Content */}
                 <motion.div
@@ -434,15 +422,6 @@ const PremiumWellnessServices = () => {
                           </motion.div>
                         ))}
                       </div>
-
-                      {/* <motion.button
-                        className="mt-12 px-8 py-4 bg-gradient-to-r from-gray-900 to-gray-800 text-white rounded-full font-light tracking-wide shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
-                        whileHover={{ scale: 1.02, y: -1 }}
-                        whileTap={{ scale: 0.98 }}
-                      >
-                        <span className="relative z-10">Learn More</span>
-                        <div className="absolute inset-0 bg-gradient-to-r from-pink-600 to-rose-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      </motion.button> */}
                     </div>
                   </div>
                 </motion.div>
