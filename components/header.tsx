@@ -116,24 +116,20 @@ export default function Header() {
               >
                 Contact
               </Link>
-              <Link
-                href="/social"
-                className="text-gray-600 hover:text-gray-800 transition-colors font-medium py-2 tracking-wider text-sm uppercase"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Social
-              </Link>
 
-              {/* Mobile icons */}
-              <div className="flex items-center gap-4 pt-4 border-t border-gray-200">
-                <button className="text-gray-600 hover:text-gray-800 transition-colors flex items-center gap-2">
-                  <Search className="w-5 h-5" />
-                  <span className="text-sm">Search</span>
-                </button>
-                <button className="text-gray-600 hover:text-gray-800 transition-colors flex items-center gap-2">
-                  <ShoppingBag className="w-5 h-5" />
-                  <span className="text-sm">Cart</span>
-                </button>
+              {/* Mobile Book Consultation Button */}
+              <div className="pt-3 mt-2 border-t border-gray-200">
+                <Button
+                  asChild
+                  size="sm"
+                  className="w-full bg-rose-400 hover:bg-rose-500 text-white px-6 py-5 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 text-sm flex items-center justify-center"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  <Link href="/contact">
+                    <Calendar className="w-4 h-4 mr-2" />
+                    <span>Book Consultation</span>
+                  </Link>
+                </Button>
               </div>
             </div>
           </nav>
