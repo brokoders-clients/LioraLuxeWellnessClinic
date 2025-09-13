@@ -339,7 +339,6 @@ const PremiumWellnessServices = () => {
       {/* Services Section */}
       <motion.section
         className="pb-20 px-6 relative"
-        className="py-12 px-6 relative"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -376,7 +375,7 @@ const PremiumWellnessServices = () => {
 
                   {/* Decorative shadow */}
                   <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-3/4 h-6 bg-gradient-to-r from-transparent via-gray-200/20 to-transparent rounded-full blur-xl" />
-                </div>
+                </motion.div>
 
                 {/* Enhanced Content */}
                 <motion.div
