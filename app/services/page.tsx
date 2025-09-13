@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
+import CTASection from "@/components/cta-section";
 
 const PremiumWellnessServices = () => {
   const services = [
@@ -16,8 +17,7 @@ const PremiumWellnessServices = () => {
         "Skin rejuvenation (microneedling, PRP, MNRF)",
         "Advanced anti-aging therapies",
       ],
-      image:
-        "/images/cosmetic.png",
+      image: "/images/cosmetic.png",
       imageAlt: "Luxurious facial treatment in serene spa setting",
       accent: "from-pink-400/20 to-rose-400/20",
       iconColor: "bg-pink-100",
@@ -34,8 +34,7 @@ const PremiumWellnessServices = () => {
         "Targeted lipolytic injections",
         "Holistic weight management programs",
       ],
-      image:
-        "/images/weight.png",
+      image: "/images/weight.png",
       imageAlt: "Wellness and fitness consultation",
       accent: "from-emerald-400/20 to-teal-400/20",
       iconColor: "bg-emerald-100",
@@ -52,8 +51,7 @@ const PremiumWellnessServices = () => {
         "Scalp rejuvenation treatments",
         "Personalized hair care protocols",
       ],
-      image:
-        "/images/hair.png",
+      image: "/images/hair.png",
       imageAlt: "Hair restoration consultation",
       accent: "from-amber-400/20 to-orange-400/20",
       iconColor: "bg-amber-100",
@@ -70,8 +68,7 @@ const PremiumWellnessServices = () => {
         "Liver detox & cleanse programs",
         "Personalized wellness consultations",
       ],
-      image:
-        "/images/therapy.png",
+      image: "/images/therapy.png",
       imageAlt: "Peaceful wellness therapy session",
       accent: "from-violet-400/20 to-purple-400/20",
       iconColor: "bg-violet-100",
@@ -144,7 +141,12 @@ const PremiumWellnessServices = () => {
             scale: [1, 1.2, 1],
             opacity: [0.6, 0.9, 0.6],
           }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1,
+          }}
         />
         <motion.div
           className="absolute bottom-40 left-32 w-1.5 h-1.5 bg-gradient-to-br from-pink-300/80 to-rose-400/60 rounded-full shadow-sm"
@@ -154,16 +156,21 @@ const PremiumWellnessServices = () => {
             scale: [1, 1.3, 1],
             opacity: [0.8, 1, 0.8],
           }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          transition={{
+            duration: 5,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2,
+          }}
         />
 
         {/* Elegant geometric lines with glow */}
-        <motion.div 
+        <motion.div
           className="absolute top-1/4 left-8 w-px h-32 bg-gradient-to-b from-transparent via-pink-300/70 to-transparent shadow-pink-200/50 shadow-sm hidden lg:block"
           animate={{ opacity: [0.4, 0.8, 0.4] }}
           transition={{ duration: 3, repeat: Infinity }}
         />
-        <motion.div 
+        <motion.div
           className="absolute top-1/3 right-12 w-px h-24 bg-gradient-to-b from-transparent via-rose-300/60 to-transparent shadow-rose-200/50 shadow-sm hidden lg:block"
           animate={{ opacity: [0.5, 0.9, 0.5] }}
           transition={{ duration: 4, repeat: Infinity, delay: 1.5 }}
@@ -310,7 +317,10 @@ const PremiumWellnessServices = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            Our <span className="bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent">Services</span>
+            Our{" "}
+            <span className="bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent">
+              Services
+            </span>
           </motion.h1>
 
           <motion.p
@@ -319,7 +329,8 @@ const PremiumWellnessServices = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
-            Premium care for your skin, body & wellness journey towards radiant health and natural beauty
+            Premium care for your skin, body & wellness journey towards radiant
+            health and natural beauty
           </motion.p>
 
           <motion.div
@@ -339,7 +350,7 @@ const PremiumWellnessServices = () => {
 
       {/* Services Section */}
       <motion.section
-        className="py-20 px-6 relative"
+        className="pb-20 px-6 relative"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -362,9 +373,7 @@ const PremiumWellnessServices = () => {
               >
                 {/* Enhanced Image - Removed hover color overlay */}
                 <motion.div
-                  className={`relative ${
-                    isLeft ? "lg:order-1" : "lg:order-2"
-                  }`}
+                  className={`relative ${isLeft ? "lg:order-1" : "lg:order-2"}`}
                   whileHover={{ y: -5 }}
                   transition={{ duration: 0.3 }}
                 >
@@ -391,7 +400,7 @@ const PremiumWellnessServices = () => {
                   <div className="bg-white/80 backdrop-blur-md p-12 rounded-3xl border border-white/30 shadow-xl shadow-gray-200/20 relative overflow-hidden">
                     {/* Background pattern */}
                     <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-pink-50/50 to-transparent rounded-bl-3xl" />
-                    
+
                     <div className="relative z-10">
                       <motion.div
                         className="inline-block mb-4"
@@ -444,80 +453,7 @@ const PremiumWellnessServices = () => {
       </motion.section>
 
       {/* Enhanced Bottom CTA Section */}
-      <motion.section
-        className="py-28 px-6 bg-gradient-to-r from-stone-100/60 via-rose-50/40 to-pink-50/50 relative overflow-hidden"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-      >
-        {/* Background decorations */}
-        <div className="absolute inset-0 pointer-events-none">
-          <motion.div
-            className="absolute top-20 left-1/4 w-3 h-3 bg-pink-300/60 rounded-full"
-            animate={petalAnimation(0)}
-          />
-          <motion.div
-            className="absolute bottom-20 right-1/4 w-2 h-2 bg-rose-300/50 rounded-full"
-            animate={petalAnimation(2)}
-          />
-        </div>
-
-        <div className="max-w-4xl mx-auto text-center relative z-10">
-          <motion.div
-            className="mb-8"
-            initial={{ scale: 0.9, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="inline-flex items-center px-6 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-pink-200/30 shadow-sm">
-              <span className="text-sm font-medium text-gray-700 tracking-wide">✨ Transform Your Wellness Journey</span>
-            </div>
-          </motion.div>
-
-          <motion.h2
-            className="text-5xl lg:text-6xl font-serif text-gray-900 mb-8 font-light leading-tight"
-            initial={{ y: 20, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6 }}
-          >
-            Ready to Begin Your <span className="bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent">Wellness Journey?</span>
-          </motion.h2>
-
-          <motion.p
-            className="text-xl text-gray-600 mb-14 font-light leading-relaxed max-w-2xl mx-auto"
-            initial={{ y: 20, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.1, duration: 0.6 }}
-          >
-            Schedule your personalized consultation today and discover the perfect treatment plan crafted specifically for your unique wellness goals.
-          </motion.p>
-
-          <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-            initial={{ y: 20, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-          >
-            <motion.button
-              className="px-12 py-4 bg-gradient-to-r from-pink-600 to-rose-600 text-white rounded-full text-lg font-medium tracking-wide shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden group"
-              whileHover={{ scale: 1.02, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <span className="relative z-10">Book Consultation</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-rose-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </motion.button>
-
-            <motion.button
-              className="px-12 py-4 bg-white/90 backdrop-blur-sm text-gray-800 rounded-full text-lg font-medium tracking-wide border border-gray-200/50 hover:border-pink-200 hover:bg-pink-50/50 transition-all duration-300 shadow-lg"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              View Packages
-            </motion.button>
-          </motion.div>
-        </div>
-      </motion.section>
+      <CTASection />
     </div>
   );
 };

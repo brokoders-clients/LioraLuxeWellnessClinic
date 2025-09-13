@@ -104,7 +104,7 @@ export default function TestimonialsSection() {
           </h2>
           <p className="text-lg text-stone-600 max-w-2xl mx-auto leading-relaxed">
             Real experiences from guests who have found peace and rejuvenation
-            at Liora Luxe Spa
+            at Liora Luxe
           </p>
         </div>
 

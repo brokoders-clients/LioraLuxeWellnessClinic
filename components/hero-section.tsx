@@ -1,6 +1,7 @@
 import type React from "react";
 import { Search, ShoppingBag, Sparkles, Heart } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const HeroSection: React.FC = () => {
   return (
@@ -153,7 +154,7 @@ const HeroSection: React.FC = () => {
             </div>
 
             {/* Enhanced typography - Fully responsive */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-serif text-gray-900/80 leading-[0.85] mb-6 tracking-tight font-light">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-serif text-gray-900/90 leading-[0.85] mb-6 tracking-tight font-light">
               Care of
               <br />
               <span className="relative inline-block">
@@ -169,18 +170,18 @@ const HeroSection: React.FC = () => {
             </h1>
 
             {/* Premium subtitle - Responsive */}
-            <p className="text-base sm:text-lg lg:text-xl text-gray-600 mb-8 lg:mb-12 leading-relaxed font-light max-w-lg mx-auto lg:mx-0">
+            <p className="text-base sm:text-lg lg:text-xl text-gray-700 mb-8 lg:mb-12 leading-relaxed font-light max-w-lg mx-auto lg:mx-0">
               Discover the perfect harmony between natural beauty and premium
               wellness care
             </p>
 
             {/* CTA Buttons - Responsive */}
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4 mb-12 lg:mb-16">
-              <button className="w-full sm:w-auto bg-gray-900/80 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium hover:bg-gray-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                Explore Services
+              <button className="w-full sm:w-auto bg-gray-900/80 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium hover:bg-gray-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 cursor-pointer">
+                <Link href="/services">Explore Services</Link>
               </button>
               <button className="w-full sm:w-auto border border-gray-300 text-gray-700 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium hover:bg-white/50 transition-all duration-300 backdrop-blur-sm">
-                Learn More
+                <Link href="/services">Learn More</Link>
               </button>
             </div>
           </div>

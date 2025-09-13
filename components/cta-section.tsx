@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function CTASection() {
   return (
-    <section className="py-20 bg-[#f5edea] relative overflow-hidden">
+    <section className="py-20 mb-20 bg-[#f5edea] relative overflow-hidden">
       <div className="container mx-auto px-4 text-center relative z-10">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-5xl font-serif text-stone-800 mb-6">
@@ -40,7 +40,7 @@ export default function CTASection() {
             </Button>
           </div>
 
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+          {/* <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
             <div>
               <div className="text-2xl font-semibold mb-2 text-stone-800 text-nowrap">
                 Aesthetic Treatments
@@ -61,7 +61,7 @@ export default function CTASection() {
                 Advanced hair growth solutions
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

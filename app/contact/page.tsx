@@ -1,51 +1,106 @@
 "use client";
 
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { MapPin, Phone, Mail, Clock, Send, Sparkles, Heart } from 'lucide-react';
+import React, { useState, useRef } from "react";
+import { motion } from "framer-motion";
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
+  Send,
+  Sparkles,
+  Heart,
+  CheckCircle,
+} from "lucide-react";
+import emailjs from "@emailjs/browser";
 
 const PremiumContactPage = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    service: '',
-    message: ''
+    name: "",
+    email: "",
+    phone: "",
+    service: "",
+    message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
+  const formRef = useRef();
+
+  // Initialize EmailJS with your public key
+  React.useEffect(() => {
+    emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
+  }, []);
 
   const handleInputChange = (e) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }));
   };
 
   const handleSubmit = async (e) => {
     if (e && e.preventDefault) e.preventDefault();
-    
+
     // Basic validation
-    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
-      alert('Please fill in all required fields.');
+    if (
+      !formData.name.trim() ||
+      !formData.email.trim() ||
+      !formData.message.trim()
+    ) {
+      setSubmitStatus({
+        type: "error",
+        message: "Please fill in all required fields.",
+      });
       return;
     }
-    
+
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    alert('Thank you for your message! We\'ll get back to you soon.');
-    setFormData({ name: '', email: '', phone: '', service: '', message: '' });
-    setIsSubmitting(false);
+    setSubmitStatus(null);
+
+    try {
+      // EmailJS configuration
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        phone: formData.phone || "Not provided",
+        service: formData.service || "General Inquiry",
+        message: formData.message,
+        to_name: "Liora Luxe Team", // Your business name
+      };
+
+      // Send email using EmailJS
+      await emailjs.send(
+        "YOUR_SERVICE_ID", // Replace with your EmailJS service ID
+        "YOUR_TEMPLATE_ID", // Replace with your EmailJS template ID
+        templateParams
+      );
+
+      setSubmitStatus({
+        type: "success",
+        message:
+          "Thank you for your message! We'll get back to you within 24 hours.",
+      });
+      setFormData({ name: "", email: "", phone: "", service: "", message: "" });
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      setSubmitStatus({
+        type: "error",
+        message:
+          "Sorry, there was an issue sending your message. Please try again or contact us directly.",
+      });
+    } finally {
+      setIsSubmitting(false);
+      // Clear status message after 5 seconds
+      setTimeout(() => setSubmitStatus(null), 5000);
+    }
   };
 
   const services = [
-    'Aesthetic & Cosmetic Treatments',
-    'Weight Loss & Body Contouring',
-    'Hair Restoration',
-    'Wellness Therapies',
-    'General Inquiry'
+    "Aesthetic & Cosmetic Treatments",
+    "Weight Loss & Body Contouring",
+    "Hair Restoration",
+    "Wellness Therapies",
+    "General Inquiry",
   ];
 
   const containerVariants = {
@@ -105,7 +160,12 @@ const PremiumContactPage = () => {
             scale: [1, 1.2, 1],
             opacity: [0.5, 0.8, 0.5],
           }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1,
+          }}
         />
         <motion.div
           className="absolute bottom-32 left-1/4 w-2 h-2 bg-gradient-to-br from-pink-300/70 to-rose-400/50 rounded-full shadow-sm"
@@ -115,16 +175,21 @@ const PremiumContactPage = () => {
             scale: [1, 1.3, 1],
             opacity: [0.7, 1, 0.7],
           }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          transition={{
+            duration: 5,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2,
+          }}
         />
 
         {/* Elegant geometric lines */}
-        <motion.div 
+        <motion.div
           className="absolute top-1/4 left-8 w-px h-24 bg-gradient-to-b from-transparent via-pink-300/50 to-transparent hidden lg:block"
           animate={{ opacity: [0.3, 0.7, 0.3] }}
           transition={{ duration: 3, repeat: Infinity }}
         />
-        <motion.div 
+        <motion.div
           className="absolute top-1/2 right-12 w-px h-16 bg-gradient-to-b from-transparent via-rose-300/40 to-transparent hidden lg:block"
           animate={{ opacity: [0.4, 0.8, 0.4] }}
           transition={{ duration: 4, repeat: Infinity, delay: 1.5 }}
@@ -211,7 +276,9 @@ const PremiumContactPage = () => {
           >
             <div className="inline-flex items-center px-6 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-pink-200/30 shadow-sm">
               <Heart className="w-4 h-4 text-pink-500 mr-3" />
-              <span className="text-sm font-medium text-gray-700 tracking-wide">We're Here to Help</span>
+              <span className="text-sm font-medium text-gray-700 tracking-wide">
+                We're Here to Help
+              </span>
             </div>
           </motion.div>
 
@@ -221,7 +288,10 @@ const PremiumContactPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            Get in <span className="bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent">Touch</span>
+            Get in{" "}
+            <span className="bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent">
+              Touch
+            </span>
           </motion.h1>
 
           <motion.p
@@ -230,7 +300,8 @@ const PremiumContactPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
-            We're here to guide you on your wellness journey towards radiant health and natural beauty
+            We're here to guide you on your wellness journey towards radiant
+            health and natural beauty
           </motion.p>
 
           <motion.div
@@ -264,66 +335,81 @@ const PremiumContactPage = () => {
           >
             {/* Background decoration */}
             <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-pink-50/50 to-transparent rounded-bl-3xl" />
-            
+
             <div className="relative z-10">
-              <h2 className="text-3xl lg:text-4xl font-serif text-gray-900 mb-10 font-light">Contact Information</h2>
-              
+              <h2 className="text-3xl lg:text-4xl font-serif text-gray-900 mb-10 font-light">
+                Contact Information
+              </h2>
+
               <div className="space-y-8">
-                <motion.div 
+                <motion.div
                   className="flex items-start gap-5 group"
                   whileHover={{ x: 5 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-4 rounded-2xl flex-shrink-0 shadow-lg group-hover:shadow-xl transition-all duration-300">
-                    <MapPin className="w-6 h-6 text-white" />
+                  <div className="bg-gradient-to-br from-rose-100 to-pink-100 p-4 rounded-2xl flex-shrink-0 shadow-md group-hover:shadow-lg transition-all duration-300 border border-rose-200/50">
+                    <MapPin className="w-6 h-6 text-rose-600" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-3 text-lg">Address</h3>
+                    <h3 className="font-semibold text-gray-900 mb-3 text-lg">
+                      Address
+                    </h3>
                     <p className="text-gray-600 font-light leading-relaxed">
-                      D19, Basement, Defence Colony<br />
+                      D19, Basement, Defence Colony
+                      <br />
                       New Delhi, Delhi - 110024
                     </p>
                   </div>
                 </motion.div>
 
-                <motion.div 
+                <motion.div
                   className="flex items-start gap-5 group"
                   whileHover={{ x: 5 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-4 rounded-2xl flex-shrink-0 shadow-lg group-hover:shadow-xl transition-all duration-300">
-                    <Phone className="w-6 h-6 text-white" />
+                  <div className="bg-gradient-to-br from-rose-100 to-pink-100 p-4 rounded-2xl flex-shrink-0 shadow-md group-hover:shadow-lg transition-all duration-300 border border-rose-200/50">
+                    <Phone className="w-6 h-6 text-rose-600" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-3 text-lg">Phone</h3>
-                    <p className="text-gray-600 font-light text-lg">+91 98765 43210</p>
+                    <h3 className="font-semibold text-gray-900 mb-3 text-lg">
+                      Phone
+                    </h3>
+                    <p className="text-gray-600 font-light text-lg">
+                      +91 98765 43210
+                    </p>
                   </div>
                 </motion.div>
 
-                <motion.div 
+                <motion.div
                   className="flex items-start gap-5 group"
                   whileHover={{ x: 5 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-4 rounded-2xl flex-shrink-0 shadow-lg group-hover:shadow-xl transition-all duration-300">
-                    <Mail className="w-6 h-6 text-white" />
+                  <div className="bg-gradient-to-br from-rose-100 to-pink-100 p-4 rounded-2xl flex-shrink-0 shadow-md group-hover:shadow-lg transition-all duration-300 border border-rose-200/50">
+                    <Mail className="w-6 h-6 text-rose-600" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-3 text-lg">Email</h3>
-                    <p className="text-gray-600 font-light text-lg">hello@wellnessjourney.com</p>
+                    <h3 className="font-semibold text-gray-900 mb-3 text-lg">
+                      Email
+                    </h3>
+                    <p className="text-gray-600 font-light text-lg">
+                      hello@wellnessjourney.com
+                    </p>
                   </div>
                 </motion.div>
 
-                <motion.div 
+                <motion.div
                   className="flex items-start gap-5 group"
                   whileHover={{ x: 5 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-4 rounded-2xl flex-shrink-0 shadow-lg group-hover:shadow-xl transition-all duration-300">
-                    <Clock className="w-6 h-6 text-white" />
+                  <div className="bg-gradient-to-br from-rose-100 to-pink-100 p-4 rounded-2xl flex-shrink-0 shadow-md group-hover:shadow-lg transition-all duration-300 border border-rose-200/50">
+                    <Clock className="w-6 h-6 text-rose-600" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-3 text-lg">Business Hours</h3>
+                    <h3 className="font-semibold text-gray-900 mb-3 text-lg">
+                      Business Hours
+                    </h3>
                     <div className="text-gray-600 font-light space-y-2">
                       <p>Monday - Friday: 9:00 AM - 7:00 PM</p>
                       <p>Saturday: 10:00 AM - 5:00 PM</p>
@@ -342,14 +428,44 @@ const PremiumContactPage = () => {
           >
             {/* Background decoration */}
             <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-rose-50/50 to-transparent rounded-tr-3xl" />
-            
+
             <div className="relative z-10">
               <div className="mb-10">
-                <h2 className="text-3xl lg:text-4xl font-serif text-gray-900 mb-4 font-light">Send us a Message</h2>
-                <p className="text-gray-600 font-light">We'd love to hear from you and help with your wellness journey.</p>
+                <h2 className="text-3xl lg:text-4xl font-serif text-gray-900 mb-4 font-light">
+                  Send us a Message
+                </h2>
+                <p className="text-gray-600 font-light">
+                  We'd love to hear from you and help with your wellness
+                  journey.
+                </p>
               </div>
-              
-              <div className="space-y-6">
+
+              {/* Status Messages */}
+              {submitStatus && (
+                <motion.div
+                  className={`mb-6 p-4 rounded-2xl border ${
+                    submitStatus.type === "success"
+                      ? "bg-green-50 border-green-200 text-green-800"
+                      : "bg-red-50 border-red-200 text-red-800"
+                  }`}
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="flex items-center gap-3">
+                    {submitStatus.type === "success" ? (
+                      <CheckCircle className="w-5 h-5 flex-shrink-0" />
+                    ) : (
+                      <div className="w-5 h-5 border-2 border-current rounded-full flex-shrink-0" />
+                    )}
+                    <span className="text-sm font-medium">
+                      {submitStatus.message}
+                    </span>
+                  </div>
+                </motion.div>
+              )}
+
+              <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-3">
@@ -361,7 +477,7 @@ const PremiumContactPage = () => {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-5 py-4 bg-white/90 border border-gray-200/50 rounded-2xl focus:border-pink-300 focus:ring-2 focus:ring-pink-100 transition-all duration-300 placeholder-gray-400 font-light shadow-sm backdrop-blur-sm"
+                      className="w-full px-5 py-4 bg-white/90 border border-gray-200/50 rounded-2xl focus:border-rose-300 focus:ring-2 focus:ring-rose-100 transition-all duration-300 placeholder-gray-400 font-light shadow-sm backdrop-blur-sm"
                       placeholder="Your full name"
                     />
                   </div>
@@ -376,7 +492,7 @@ const PremiumContactPage = () => {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-5 py-4 bg-white/90 border border-gray-200/50 rounded-2xl focus:border-pink-300 focus:ring-2 focus:ring-pink-100 transition-all duration-300 placeholder-gray-400 font-light shadow-sm backdrop-blur-sm"
+                      className="w-full px-5 py-4 bg-white/90 border border-gray-200/50 rounded-2xl focus:border-rose-300 focus:ring-2 focus:ring-rose-100 transition-all duration-300 placeholder-gray-400 font-light shadow-sm backdrop-blur-sm"
                       placeholder="your@email.com"
                     />
                   </div>
@@ -392,7 +508,7 @@ const PremiumContactPage = () => {
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="w-full px-5 py-4 bg-white/90 border border-gray-200/50 rounded-2xl focus:border-pink-300 focus:ring-2 focus:ring-pink-100 transition-all duration-300 placeholder-gray-400 font-light shadow-sm backdrop-blur-sm"
+                      className="w-full px-5 py-4 bg-white/90 border border-gray-200/50 rounded-2xl focus:border-rose-300 focus:ring-2 focus:ring-rose-100 transition-all duration-300 placeholder-gray-400 font-light shadow-sm backdrop-blur-sm"
                       placeholder="+91 98765 43210"
                     />
                   </div>
@@ -405,11 +521,13 @@ const PremiumContactPage = () => {
                       name="service"
                       value={formData.service}
                       onChange={handleInputChange}
-                      className="w-full px-5 py-4 bg-white/90 border border-gray-200/50 rounded-2xl focus:border-pink-300 focus:ring-2 focus:ring-pink-100 transition-all duration-300 font-light shadow-sm backdrop-blur-sm"
+                      className="w-full px-5 py-4 bg-white/90 border border-gray-200/50 rounded-2xl focus:border-rose-300 focus:ring-2 focus:ring-rose-100 transition-all duration-300 font-light shadow-sm backdrop-blur-sm"
                     >
                       <option value="">Select a service</option>
                       {services.map((service, index) => (
-                        <option key={index} value={service}>{service}</option>
+                        <option key={index} value={service}>
+                          {service}
+                        </option>
                       ))}
                     </select>
                   </div>
@@ -425,7 +543,7 @@ const PremiumContactPage = () => {
                     onChange={handleInputChange}
                     required
                     rows="6"
-                    className="w-full px-5 py-4 bg-white/90 border border-gray-200/50 rounded-2xl focus:border-pink-300 focus:ring-2 focus:ring-pink-100 transition-all duration-300 placeholder-gray-400 font-light resize-none shadow-sm backdrop-blur-sm"
+                    className="w-full px-5 py-4 bg-white/90 border border-gray-200/50 rounded-2xl focus:border-rose-300 focus:ring-2 focus:ring-rose-100 transition-all duration-300 placeholder-gray-400 font-light resize-none shadow-sm backdrop-blur-sm"
                     placeholder="Tell us about your wellness goals and how we can help you achieve them..."
                   />
                 </div>
@@ -433,14 +551,13 @@ const PremiumContactPage = () => {
                 <motion.button
                   type="submit"
                   disabled={isSubmitting}
-                  onClick={handleSubmit}
-                  className="w-full bg-gradient-to-r from-gray-900 to-gray-800 text-white py-5 px-8 rounded-2xl font-medium text-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed relative overflow-hidden group"
+                  className="w-full bg-gradient-to-r from-rose-100 to-pink-100 text-rose-800 py-5 px-8 rounded-2xl font-medium text-lg hover:from-rose-200 hover:to-pink-200 hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed relative overflow-hidden group border border-rose-200/50"
                   whileHover={{ scale: 1.01, y: -1 }}
                   whileTap={{ scale: 0.99 }}
                 >
                   <span className="relative z-10 flex items-center gap-3">
                     {isSubmitting ? (
-                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      <div className="w-5 h-5 border-2 border-rose-600/30 border-t-rose-600 rounded-full animate-spin" />
                     ) : (
                       <>
                         <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -448,9 +565,8 @@ const PremiumContactPage = () => {
                       </>
                     )}
                   </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-pink-600 to-rose-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </motion.button>
-              </div>
+              </form>
             </div>
           </motion.div>
         </motion.div>
@@ -466,7 +582,7 @@ const PremiumContactPage = () => {
           <div className="bg-white/80 backdrop-blur-md rounded-3xl p-10 border border-white/30 shadow-xl shadow-gray-200/20 relative overflow-hidden">
             {/* Background decoration */}
             <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-40 h-20 bg-gradient-to-b from-pink-50/30 to-transparent rounded-b-3xl" />
-            
+
             <div className="relative z-10">
               <div className="text-center mb-10">
                 <motion.div
@@ -474,13 +590,19 @@ const PremiumContactPage = () => {
                   whileHover={{ scale: 1.05 }}
                 >
                   <MapPin className="w-4 h-4 text-pink-500 mr-2" />
-                  <span className="text-sm font-medium text-pink-600">Our Location</span>
+                  <span className="text-sm font-medium text-pink-600">
+                    Our Location
+                  </span>
                 </motion.div>
-                
-                <h2 className="text-3xl lg:text-4xl font-serif text-gray-900 font-light">Find Us</h2>
-                <p className="text-gray-600 font-light mt-3">Located in the heart of Defence Colony, New Delhi</p>
+
+                <h2 className="text-3xl lg:text-4xl font-serif text-gray-900 font-light">
+                  Find Us
+                </h2>
+                <p className="text-gray-600 font-light mt-3">
+                  Located in the heart of Defence Colony, New Delhi
+                </p>
               </div>
-              
+
               <motion.div
                 className="relative overflow-hidden rounded-2xl shadow-lg"
                 whileHover={{ scale: 1.01 }}

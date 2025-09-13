@@ -33,9 +33,9 @@ export default function ServicesSection() {
           <h2 className="text-4xl md:text-5xl font-serif text-gray-800 mb-4">
             Services
           </h2>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+          {/* <p className="text-gray-600 text-lg max-w-2xl mx-auto">
             Relaxation of body and mind in which time does not exist.
-          </p>
+          </p> */}
         </div>
 
         {/* Services Grid */}

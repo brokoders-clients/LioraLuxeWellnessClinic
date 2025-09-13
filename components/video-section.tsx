@@ -24,12 +24,12 @@ export default function VideoSection() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-serif text-stone-800 mb-4">
-              Experience Our Spa Sanctuary
+              Experience Our Wellness Center
             </h2>
-            <p className="text-lg text-stone-600 leading-relaxed">
+            {/* <p className="text-lg text-stone-600 leading-relaxed">
               Take a virtual journey through our tranquil spa and discover the
               serene spaces where your wellness transformation begins
-            </p>
+            </p> */}
           </div>
 
           <div className="relative rounded-2xl overflow-hidden shadow-xl">

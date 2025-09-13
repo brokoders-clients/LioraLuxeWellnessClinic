@@ -9,8 +9,8 @@ export default function WelcomeSection() {
           <div className="relative">
             <div className="bg-white rounded-2xl p-8 shadow-sm">
               <Image
-                src="images/bottle.png"
-                alt="Spa product bottle with pump dispenser"
+                src="/images/bottle.png"
+                alt="Premium wellness and product bottle"
                 width={400}
                 height={800}
                 className="w-full h-[600px] object-cover object-center rounded-lg scale-100"
@@ -23,22 +23,32 @@ export default function WelcomeSection() {
             <h2 className="text-4xl md:text-5xl font-serif text-gray-800 leading-tight">
               Welcome
               <br />
-              to Liora Luxe Spa
+              to Liora Luxe
             </h2>
             <p className="text-gray-600 leading-relaxed text-lg">
-              Everybody is looking for places where to relax and get more
-              energy. In our wellness center your energy, beauty and vitality
-              meet. The treatments we offer will refresh both your body and
-              soul. We are going to welcome you and recommend our facilities and
-              services.
+              At <span className="font-semibold text-gray-800">Liora Luxe</span>
+              , we believe wellness is a journey where beauty, vitality, and
+              inner peace meet. Our sanctuary is designed to help you slow down,
+              recharge, and rediscover balance in body, mind, and soul.
+            </p>
+            <p className="text-gray-600 leading-relaxed text-lg">
+              From{" "}
+              <span className="font-medium">
+                Aesthetic & Cosmetic Treatments
+              </span>
+              that enhance your natural glow, to
+              <span className="font-medium">
+                {" "}
+                Weight Loss & Body Contouring
+              </span>
+              programs that bring visible results, to
+              <span className="font-medium"> Hair Restoration</span> therapies
+              and deeply relaxing{" "}
+              <span className="font-medium">Wellness Therapies</span>, every
+              treatment is carefully curated for your well-being.
             </p>
           </div>
         </div>
-
-        {/* Floating Rose Petal */}
-        {/* <div className="absolute bottom-10 right-10 opacity-60">
-          <div className="w-16 h-16 bg-gradient-to-br from-pink-300 to-pink-400 rounded-full transform rotate-45 shadow-lg"></div>
-        </div> */}
       </div>
     </section>
   );

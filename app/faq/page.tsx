@@ -1,6 +1,7 @@
 "use client";
-import { Plus, Minus } from "lucide-react";
+import { Plus, Minus, MessageCircle } from "lucide-react";
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -10,79 +11,94 @@ export default function FAQ() {
       category: "General",
       questions: [
         {
-          question: "What should I expect during my first visit?",
+          question: "What services does your wellness center provide?",
           answer:
-            "During your initial consultation, our medical team will assess your needs, discuss your goals, and create a personalized treatment plan. We'll also give you a tour of our facilities and answer any questions you may have.",
+            "We specialize in four main areas: Aesthetic & Cosmetic Treatments, Weight Loss & Body Contouring, Hair Restoration, and Wellness Therapies. Each program is tailored to your individual needs and goals.",
         },
         {
-          question: "Are your treatments safe?",
+          question: "Do I need a consultation before starting treatment?",
           answer:
-            "Yes, all our treatments are performed by licensed professionals using FDA-approved equipment and techniques. We maintain the highest safety standards and will discuss any potential risks during your consultation.",
+            "Yes, every client begins with a personalized consultation. Our experts will assess your health, discuss your concerns, and recommend the most suitable treatment plan for you.",
         },
         {
-          question: "Do you offer payment plans?",
+          question: "Are the treatments safe?",
           answer:
-            "We offer various payment options including financing plans to make our treatments accessible. Our team can discuss payment options that work best for your budget during your consultation.",
-        },
-      ],
-    },
-    {
-      category: "Aesthetic Treatments",
-      questions: [
-        {
-          question: "How long do Botox results last?",
-          answer:
-            "Botox results typically last 3-4 months. The duration can vary based on individual factors such as muscle strength, metabolism, and treatment area. We'll schedule follow-up appointments to maintain your results.",
+            "All our treatments are carried out by qualified professionals using advanced technology and medically approved methods. Your safety and comfort are our top priorities.",
         },
         {
-          question: "Is there downtime after facial treatments?",
+          question: "How soon can I see results?",
           answer:
-            "Most of our facial treatments have minimal to no downtime. Some procedures like chemical peels may cause mild redness for 1-2 days. We'll provide detailed aftercare instructions for each treatment.",
+            "The timeline varies by service. Some treatments show visible results quickly, while others such as weight loss programs or hair restoration require consistent sessions over weeks to months for best outcomes.",
         },
         {
-          question: "When will I see results from my treatment?",
+          question: "Do you offer customized programs?",
           answer:
-            "Results vary by treatment type. Some procedures show immediate improvement, while others may take several weeks. We'll set realistic expectations during your consultation based on your specific treatment plan.",
+            "Absolutely. We believe every individual is unique, so our team designs personalized treatment plans that align with your health profile, lifestyle, and desired results.",
+        },
+        {
+          question: "Is financing or installment payment available?",
+          answer:
+            "Yes, we offer flexible payment options and financing plans to make our services accessible. Our team can guide you through the available options during your consultation.",
         },
       ],
     },
     {
-      category: "Weight Loss Programs",
+      category: "Aesthetic & Cosmetic Treatments",
       questions: [
         {
-          question: "How much weight can I expect to lose?",
+          question: "What kind of skin treatments do you provide?",
           answer:
-            "Weight loss results vary based on individual factors, starting weight, and commitment to the program. Our medical team will set realistic, healthy goals during your consultation and monitor your progress throughout the program.",
+            "We offer a range of services including facials, chemical peels, laser-based therapies, and anti-aging treatments, all designed to enhance skin health and appearance.",
         },
         {
-          question: "Are your weight loss programs medically supervised?",
+          question: "Is there downtime after treatments?",
           answer:
-            "Yes, all our weight loss programs are medically supervised by our qualified healthcare professionals. We monitor your health throughout the process and adjust your plan as needed for safe, effective results.",
-        },
-        {
-          question: "Do you provide meal plans?",
-          answer:
-            "We provide personalized nutrition guidance and meal planning as part of our comprehensive weight loss programs. Our nutritionists work with you to create sustainable eating habits that fit your lifestyle.",
+            "Most cosmetic treatments have little to no downtime. Some may cause mild redness or sensitivity, which typically resolves within a day or two. Aftercare instructions will be provided for optimal recovery.",
         },
       ],
     },
     {
-      category: "IV Therapy",
+      category: "Weight Loss & Body Contouring",
       questions: [
         {
-          question: "How long does an IV therapy session take?",
+          question: "How is your weight loss program different?",
           answer:
-            "Most IV therapy sessions take 30-60 minutes, depending on the specific treatment. You can relax in our comfortable treatment rooms during the session, and many clients use this time to read or rest.",
+            "Our programs are medically supervised and focus on sustainable lifestyle changes, not just quick fixes. We combine nutrition guidance, safe therapies, and regular monitoring for lasting results.",
         },
         {
-          question: "How often should I get IV therapy?",
+          question: "Are body contouring treatments painful?",
           answer:
-            "The frequency depends on your individual needs and goals. Some clients benefit from weekly sessions, while others prefer monthly treatments. We'll recommend a schedule based on your health assessment and objectives.",
+            "Most clients experience minimal discomfort, and many treatments are completely non-invasive. We ensure your sessions are as comfortable as possible.",
+        },
+      ],
+    },
+    {
+      category: "Hair Restoration",
+      questions: [
+        {
+          question: "What types of hair restoration treatments do you offer?",
+          answer:
+            "We provide non-surgical therapies, advanced clinical treatments, and supportive care to promote hair regrowth, strengthen existing hair, and prevent further hair loss.",
         },
         {
-          question: "Are there any side effects?",
+          question: "How many sessions are needed for visible results?",
           answer:
-            "IV therapy is generally very safe with minimal side effects. Some people may experience slight discomfort at the injection site. Our medical team monitors you throughout the session to ensure your comfort and safety.",
+            "Hair restoration is a gradual process. While some improvement can be noticed within a few months, full results usually appear after multiple sessions depending on the individual.",
+        },
+      ],
+    },
+    {
+      category: "Wellness Therapies",
+      questions: [
+        {
+          question: "What do your wellness therapies include?",
+          answer:
+            "We provide stress-relief therapies, relaxation techniques, and energy-balancing treatments aimed at improving both physical and mental well-being.",
+        },
+        {
+          question: "Who can benefit from wellness therapies?",
+          answer:
+            "Wellness therapies are suitable for anyone experiencing stress, fatigue, or imbalance. They are ideal for individuals looking to restore energy, focus, and overall vitality.",
         },
       ],
     },
@@ -93,33 +109,49 @@ export default function FAQ() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-stone-50 to-rose-50 relative overflow-hidden">
-      {/* Decorative Elements */}
-      <div className="absolute top-10 left-10 w-8 h-8 bg-gradient-to-br from-rose-200 to-rose-300 rounded-full opacity-60 transform rotate-45"></div>
-      <div className="absolute top-32 right-20 w-6 h-6 bg-gradient-to-br from-pink-200 to-pink-300 rounded-full opacity-50 transform -rotate-12"></div>
-      <div className="absolute bottom-20 left-1/4 w-10 h-10 bg-gradient-to-br from-rose-300 to-rose-400 rounded-full opacity-40 transform rotate-12"></div>
+    <div className="min-h-screen bg-gradient-to-b from-stone-50 to-white relative overflow-hidden">
+      {/* Subtle Rose Petals */}
+      <div className="absolute top-16 left-8 w-3 h-4 opacity-20 transform rotate-12">
+        <div className="w-full h-full bg-gradient-to-br from-rose-400 to-rose-500 rounded-full transform skew-y-12"></div>
+      </div>
+      <div className="absolute top-32 right-16 w-2 h-3 opacity-25 transform -rotate-45">
+        <div className="w-full h-full bg-gradient-to-br from-pink-400 to-rose-400 rounded-full transform skew-x-12"></div>
+      </div>
+      <div className="absolute bottom-24 left-12 w-3 h-3 opacity-20 transform rotate-75">
+        <div className="w-full h-full bg-gradient-to-br from-rose-300 to-pink-400 rounded-full transform skew-y-6"></div>
+      </div>
+      <div className="absolute bottom-32 right-20 w-2 h-3 opacity-25 transform -rotate-30">
+        <div className="w-full h-full bg-gradient-to-br from-pink-400 to-rose-400 rounded-full transform skew-x-6"></div>
+      </div>
 
-      <div className="container mx-auto px-4 py-20 relative z-10">
-        {/* Header */}
-        <div className="text-center mb-16">
+      <div className="container mx-auto px-4 py-16 relative z-10">
+        {/* Clean Header */}
+        <div className="text-center mb-20">
           <h1 className="text-4xl md:text-5xl font-serif text-stone-800 mb-6">
             Frequently Asked Questions
           </h1>
-          <p className="text-lg text-stone-600 max-w-3xl mx-auto leading-relaxed">
-            Find answers to common questions about our treatments, services, and
-            wellness programs. If you don't see your question here, feel free to
-            contact us directly.
+          <p className="text-lg text-stone-600 max-w-2xl mx-auto leading-relaxed">
+            Everything you need to know about our treatments and services
           </p>
         </div>
 
-        {/* FAQ Categories */}
-        <div className="max-w-4xl mx-auto">
+        {/* FAQ Content */}
+        <div className="max-w-4xl mx-auto space-y-12">
           {faqs.map((category, categoryIndex) => (
-            <div key={categoryIndex} className="mb-12">
-              <h2 className="text-2xl font-serif text-stone-800 mb-6 text-center">
-                {category.category}
-              </h2>
-              <div className="space-y-4">
+            <div key={categoryIndex}>
+              {/* Category Header */}
+              <div className="mb-8">
+                <div className="flex items-center justify-center mb-6">
+                  <div className="h-px bg-gradient-to-r from-transparent via-rose-300 to-transparent flex-1"></div>
+                  <h2 className="text-xl font-serif text-stone-800 px-6 bg-white">
+                    {category.category}
+                  </h2>
+                  <div className="h-px bg-gradient-to-r from-transparent via-rose-300 to-transparent flex-1"></div>
+                </div>
+              </div>
+
+              {/* Questions */}
+              <div className="space-y-3">
                 {category.questions.map((faq, questionIndex) => {
                   const globalIndex = categoryIndex * 10 + questionIndex;
                   const isOpen = openIndex === globalIndex;
@@ -127,26 +159,27 @@ export default function FAQ() {
                   return (
                     <div
                       key={questionIndex}
-                      className="bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg border border-stone-200/50 overflow-hidden"
+                      className="bg-white rounded-xl shadow-sm border border-stone-100 hover:shadow-md transition-all duration-300"
                     >
                       <button
                         onClick={() => toggleFAQ(globalIndex)}
-                        className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-rose-50/50 transition-colors"
+                        className="w-full px-6 py-5 text-left flex items-center justify-between hover:bg-stone-50/50 transition-colors rounded-xl group"
                       >
-                        <span className="font-semibold text-stone-800 pr-4">
+                        <span className="font-medium text-stone-800 pr-4 group-hover:text-rose-600 transition-colors">
                           {faq.question}
                         </span>
-                        <div className="flex-shrink-0">
+                        <div className="flex-shrink-0 w-8 h-8 rounded-full bg-rose-50 flex items-center justify-center group-hover:bg-rose-100 transition-colors">
                           {isOpen ? (
-                            <Minus className="h-5 w-5 text-rose-500" />
+                            <Minus className="h-4 w-4 text-rose-500" />
                           ) : (
-                            <Plus className="h-5 w-5 text-rose-500" />
+                            <Plus className="h-4 w-4 text-rose-500" />
                           )}
                         </div>
                       </button>
+
                       {isOpen && (
-                        <div className="px-6 pb-4">
-                          <p className="text-stone-600 leading-relaxed">
+                        <div className="px-6 pb-5 border-t border-stone-100 bg-[#f5edea]">
+                          <p className="text-stone-600 leading-relaxed pt-4">
                             {faq.answer}
                           </p>
                         </div>
@@ -160,18 +193,24 @@ export default function FAQ() {
         </div>
 
         {/* Contact CTA */}
-        <div className="text-center mt-16">
-          <div className="bg-gradient-to-r from-rose-100 to-pink-100 rounded-2xl p-8 md:p-12 max-w-3xl mx-auto">
+        <div className="text-center mt-20">
+          <div className="bg-pink-50 rounded-2xl border border-orange-700/70 p-8 md:p-12 max-w-2xl mx-auto">
+            <div className="w-16 h-16 bg-gradient-to-br from-rose-100 to-pink-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <MessageCircle className="h-8 w-8 text-rose-500" />
+            </div>
             <h2 className="text-2xl md:text-3xl font-serif text-stone-800 mb-4">
               Still Have Questions?
             </h2>
-            <p className="text-stone-600 mb-6">
+            <p className="text-stone-600 mb-8 leading-relaxed">
               Our friendly team is here to help you with any additional
-              questions or concerns you may have.
+              questions or concerns
             </p>
-            <button className="bg-gradient-to-r from-rose-400 to-rose-500 text-white px-8 py-3 rounded-full font-semibold hover:from-rose-500 hover:to-rose-600 transition-all duration-300 shadow-lg hover:shadow-xl">
-              Contact Us
-            </button>
+            <Button
+              size="lg"
+              className="bg-rose-400 hover:bg-rose-500 text-white px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+            >
+              Contact Us Today
+            </Button>
           </div>
         </div>
       </div>
