@@ -7,45 +7,37 @@ export default function WelcomeSection() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Product Image */}
           <div className="relative">
-            <div className="bg-white rounded-2xl p-8 shadow-sm">
+            <div className="bg-white rounded-2xl p-8 shadow-md">
               <Image
                 src="/images/bottle.png"
-                alt="Premium wellness and product bottle"
+                alt="Premium wellness product - Liora Luxe"
                 width={400}
                 height={800}
-                className="w-full h-[600px] object-cover object-center rounded-lg scale-100"
+                className="w-full h-[500px] object-cover object-center rounded-xl"
               />
             </div>
           </div>
 
           {/* Welcome Content */}
           <div className="space-y-6">
-            <h2 className="text-4xl md:text-5xl font-serif text-gray-800 leading-tight">
-              Welcome
-              <br />
-              to Liora Luxe
+            <h2 className="text-4xl md:text-5xl font-serif text-gray-900 leading-tight">
+              THE LIORA LUXE LOVE
             </h2>
-            <p className="text-gray-600 leading-relaxed text-lg">
-              At <span className="font-semibold text-gray-800">Liora Luxe</span>
-              , we believe wellness is a journey where beauty, vitality, and
-              inner peace meet. Our sanctuary is designed to help you slow down,
-              recharge, and rediscover balance in body, mind, and soul.
+            <p className="text-lg text-gray-700 leading-relaxed font-light">
+              Welcome to{" "}
+              <span className="font-medium text-gray-900">Liora Luxe</span> —
+              where Wellness, Beauty, and Balance converge into the art of
+              self‑care. We redefine self‑care as a holistic experience that
+              nurtures natural beauty, revitalizes your body, and restores inner
+              harmony. A place to relax, recharge, and realign with your best
+              self.
             </p>
-            <p className="text-gray-600 leading-relaxed text-lg">
-              From{" "}
-              <span className="font-medium">
-                Aesthetic & Cosmetic Treatments
-              </span>
-              that enhance your natural glow, to
-              <span className="font-medium">
-                {" "}
-                Weight Loss & Body Contouring
-              </span>
-              programs that bring visible results, to
-              <span className="font-medium"> Hair Restoration</span> therapies
-              and deeply relaxing{" "}
-              <span className="font-medium">Wellness Therapies</span>, every
-              treatment is carefully curated for your well-being.
+            <p className="text-lg text-gray-700 leading-relaxed font-light">
+              Explore our advanced Aesthetic & Cosmetic Treatments, targeted
+              Body Contouring solutions, state‑of‑the‑art Hair Restoration
+              therapies, and rejuvenating Wellness Services. Each treatment is
+              personalized to deliver visible results while supporting your
+              long‑term well‑being — inside and out.
             </p>
           </div>
         </div>

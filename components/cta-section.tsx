@@ -8,12 +8,12 @@ export default function CTASection() {
       <div className="container mx-auto px-4 text-center relative z-10">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-5xl font-serif text-stone-800 mb-6">
-            Transform Your Beauty & Wellness Journey
+            TRANSFORM FROM WITHIN
           </h2>
           <p className="text-xl mb-8 text-stone-700 font-light">
-            Discover personalized aesthetic treatments, body contouring, hair
-            restoration, and wellness therapies designed to help you look and
-            feel your absolute best
+            Book a consultation now and begin your transformative journey
+            towards rejuvenation through our expert led aesthetic treatments,
+            TODAY.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

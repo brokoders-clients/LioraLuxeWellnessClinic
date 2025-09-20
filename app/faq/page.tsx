@@ -11,34 +11,36 @@ export default function FAQ() {
       category: "General",
       questions: [
         {
-          question: "What services does your wellness center provide?",
+          question: "What Services Does Liora Luxe Wellness Center Offer?",
           answer:
-            "We specialize in four main areas: Aesthetic & Cosmetic Treatments, Weight Loss & Body Contouring, Hair Restoration, and Wellness Therapies. Each program is tailored to your individual needs and goals.",
+            "We specialize in delivering comprehensive, results-driven wellness solutions across four core service areas: Aesthetic & Cosmetic Treatments, Weight Loss & Body Contouring, Hair Restoration Treatments and Holistic Wellness Therapies. Every service is customized to your unique health and aesthetic goals also ensuring safety.",
         },
         {
-          question: "Do I need a consultation before starting treatment?",
+          question: "Is a Consultation Required Before Starting Treatment?",
           answer:
-            "Yes, every client begins with a personalized consultation. Our experts will assess your health, discuss your concerns, and recommend the most suitable treatment plan for you.",
+            "Every client must begin with a comprehensive, personalized consultation. Our wellness and aesthetic experts conduct a thorough health assessment, understand your individual concerns, and design a customized treatment plan. This ensures safe, effective, and optimal results for the services we provide.",
         },
         {
-          question: "Are the treatments safe?",
+          question: "Are Liora Luxe Treatments Safe?",
           answer:
-            "All our treatments are carried out by qualified professionals using advanced technology and medically approved methods. Your safety and comfort are our top priorities.",
+            "Absolutely! All treatments at Liora Luxe are performed by licensed, experienced professionals using state-of-the-art technology and medically approved, non-invasive techniques. We strictly adhere to industry safety standards and health regulations, ensuring your comfort, safety, and optimal results during every step of your personalized wellness and aesthetic journey. Your Safety-Our Priority!",
         },
         {
-          question: "How soon can I see results?",
+          question:
+            "How Soon Can I Expect Results from Treatments at Liora Luxe?",
           answer:
-            "The timeline varies by service. Some treatments show visible results quickly, while others such as weight loss programs or hair restoration require consistent sessions over weeks to months for best outcomes.",
+            "The timeline for visible results might vary depending on the required treatment type. Many aesthetic procedures deliver noticeable improvements shortly after the session, while weight loss programs, body contouring, and hair restoration therapies typically require consistent sessions taking up over several weeks to months to achieve optimal, desirable results. Our experts will provide a personalized timeline based on your specific treatment plan and goals. ",
         },
         {
-          question: "Do you offer customized programs?",
+          question: "Do You Offer Customized Wellness and Aesthetic Programs?",
           answer:
-            "Absolutely. We believe every individual is unique, so our team designs personalized treatment plans that align with your health profile, lifestyle, and desired results.",
+            "We specialize in personalized treatment plans customized as per your unique health profile, lifestyle, and beauty goals. Our expert team creates customized wellness and aesthetic programs designed to deliver effective, long-lasting results that align perfectly with individual needs.",
         },
         {
-          question: "Is financing or installment payment available?",
+          question:
+            "Is Financing or Installment Payment Available at Liora Luxe?",
           answer:
-            "Yes, we offer flexible payment options and financing plans to make our services accessible. Our team can guide you through the available options during your consultation.",
+            "Through flexible financing options and easy installment payment plans we make our premium wellness and aesthetic treatments more accessible. Our team will guide you through all available payment solutions during your personalized consultation, ensuring a seamless and affordable experience",
         },
       ],
     },
@@ -46,14 +48,14 @@ export default function FAQ() {
       category: "Aesthetic & Cosmetic Treatments",
       questions: [
         {
-          question: "What kind of skin treatments do you provide?",
+          question: "What Types of Skin Treatments Does Liora Luxe Offer?",
           answer:
-            "We offer a range of services including facials, chemical peels, laser-based therapies, and anti-aging treatments, all designed to enhance skin health and appearance.",
+            "At Liora Luxe, we offer a comprehensive range of advanced skin treatments designed to improve skin health, texture, and youthful appearance. Our expert services include customized facials, professional chemical peels, laser skin therapies for pigmentation and rejuvenation, and leading-edge anti-aging treatments—all tailored to enhance your natural beauty and achieve radiant, healthy skin.",
         },
         {
-          question: "Is there downtime after treatments?",
+          question: "Is There Downtime After Treatments at Liora Luxe?",
           answer:
-            "Most cosmetic treatments have little to no downtime. Some may cause mild redness or sensitivity, which typically resolves within a day or two. Aftercare instructions will be provided for optimal recovery.",
+            "Most of our advanced cosmetic and wellness treatments involve minimal to no downtime, allowing you to quickly resume your daily activities. Some procedures may cause temporary redness, mild swelling, or sensitivity—typically resolving within 24 to 48 hours. We provide comprehensive aftercare instructions and professional medical care to ensure a smooth recovery and maximize your treatment results.",
         },
       ],
     },
@@ -61,14 +63,15 @@ export default function FAQ() {
       category: "Weight Loss & Body Contouring",
       questions: [
         {
-          question: "How is your weight loss program different?",
+          question:
+            "What Sets Liora Luxe’s Medically Supervised Weight Loss Program Apart?",
           answer:
-            "Our programs are medically supervised and focus on sustainable lifestyle changes, not just quick fixes. We combine nutrition guidance, safe therapies, and regular monitoring for lasting results.",
+            "Our weight loss programs are medically supervised and emphasize sustainable lifestyle transformations rather than quick fixes. We integrate expert nutrition counseling, safe, non-invasive fat reduction therapies, and continuous health monitoring to create personalized, effective plans that deliver effective weight management and overall wellness.",
         },
         {
-          question: "Are body contouring treatments painful?",
+          question: "Are Body Contouring Treatments Painful?",
           answer:
-            "Most clients experience minimal discomfort, and many treatments are completely non-invasive. We ensure your sessions are as comfortable as possible.",
+            "Most clients experience minimal to no discomfort during our advanced body contouring treatments. Many of our procedures are non-invasive and designed for maximum comfort, allowing you to relax while safely sculpting and toning your body. At Liora Luxe, we prioritize your comfort to ensure a positive and pain-free experience every session.",
         },
       ],
     },
@@ -76,14 +79,16 @@ export default function FAQ() {
       category: "Hair Restoration",
       questions: [
         {
-          question: "What types of hair restoration treatments do you offer?",
+          question:
+            "What Types of Hair Restoration Treatments Does Liora Luxe Offer?",
           answer:
-            "We provide non-surgical therapies, advanced clinical treatments, and supportive care to promote hair regrowth, strengthen existing hair, and prevent further hair loss.",
+            "We offer non-surgical hair restoration therapies and advanced clinical treatments designed to stimulate natural hair re-growth, strengthen existing hair follicles, and prevent further hair loss. Our personalized approach combines advanced solutions and supportive care to deliver effective, lasting results for men and women experiencing thinning or hair loss. ",
         },
         {
-          question: "How many sessions are needed for visible results?",
+          question:
+            "How Many Sessions Are Needed to See Visible Results from Hair Restoration?",
           answer:
-            "Hair restoration is a gradual process. While some improvement can be noticed within a few months, full results usually appear after multiple sessions depending on the individual.",
+            "Hair restoration is a gradual and progressive process. While some clients may notice initial improvement within a few months, optimal results typically require multiple treatment sessions tailored to your individual hair growth cycle and condition. Our experts at Liora Luxe will provide a customized treatment plan with a clear timeline to help you achieve natural, lasting hair re-growth.",
         },
       ],
     },
@@ -91,14 +96,14 @@ export default function FAQ() {
       category: "Wellness Therapies",
       questions: [
         {
-          question: "What do your wellness therapies include?",
+          question: "What Wellness Therapies Does Liora Luxe Offer?",
           answer:
-            "We provide stress-relief therapies, relaxation techniques, and energy-balancing treatments aimed at improving both physical and mental well-being.",
+            "Our holistic wellness therapies include expertly designed stress-relief treatments, deep relaxation techniques, and energy balancing therapies aimed at enhancing both your physical health and mental well-being. Our personalized approach includes detoxification, rejuvenation, and overall harmony to help you achieve optimal vitality and inner balance.",
         },
         {
-          question: "Who can benefit from wellness therapies?",
+          question: "Who Can Benefit from Wellness Therapies at Liora Luxe?",
           answer:
-            "Wellness therapies are suitable for anyone experiencing stress, fatigue, or imbalance. They are ideal for individuals looking to restore energy, focus, and overall vitality.",
+            "Our wellness therapies are ideal for individuals experiencing stress, fatigue, or physical and mental imbalance. Whether you’re seeking to restore energy, enhance mental clarity, or improve overall vitality, Liora Luxe’s personalized holistic treatments support your journey towards renewed health and well-being. ",
         },
       ],
     },
@@ -202,8 +207,9 @@ export default function FAQ() {
               Still Have Questions?
             </h2>
             <p className="text-stone-600 mb-8 leading-relaxed">
-              Our friendly team is here to help you with any additional
-              questions or concerns
+              Feel free to ping us up anytime at LIORA LUXE with your queries
+              and concerns. Our team will be ready with your customary
+              solutions.
             </p>
             <Button
               size="lg"

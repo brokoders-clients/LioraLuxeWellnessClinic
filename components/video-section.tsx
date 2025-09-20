@@ -72,7 +72,12 @@ export default function VideoSection() {
 
             <div className="absolute bottom-6 left-6 text-white">
               <h3 className="text-2xl font-serif mb-2">Spa Tour</h3>
-              <p className="text-lg opacity-90">Explore our peaceful retreat</p>
+              <p className="text-lg opacity-90">
+                Explore our peaceful retreat designed to rejuvenate your body
+                and mind. Experience exclusive spa treatments and personalized
+                relaxation journeys- an escape into the LIORA LUXE luxury of
+                wellness.
+              </p>
             </div>
           </div>
 
@@ -87,8 +92,9 @@ export default function VideoSection() {
                 Tranquil Treatment Rooms
               </h4>
               <p className="text-sm text-stone-600 leading-relaxed">
-                Serene spaces designed for your ultimate relaxation and
-                rejuvenation
+                Serene, calming environment and aesthetics designed to enhance
+                your wellness experience. Relax deeply and rejuvenate your mind,
+                body, and soul in our luxury sanctuary.
               </p>
             </div>
             <div className="text-center">
@@ -101,8 +107,9 @@ export default function VideoSection() {
                 Meditation Lounge
               </h4>
               <p className="text-sm text-stone-600 leading-relaxed">
-                A peaceful sanctuary where time stands still and stress melts
-                away
+                Designed for deep relaxation and mental clarity. Restore balance
+                in a calm and serene space- where time stands still and stress
+                melts away.
               </p>
             </div>
             <div className="text-center">
@@ -115,7 +122,8 @@ export default function VideoSection() {
                 Wellness Consultations
               </h4>
               <p className="text-sm text-stone-600 leading-relaxed">
-                Personalized sessions with our expert wellness practitioners
+                Personalized sessions with expert guidance from certified
+                practitioners to support your journey to optimal vitality.
               </p>
             </div>
           </div>
